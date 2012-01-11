@@ -49,6 +49,8 @@ got_packet (u_char * useless,
 	if(! packet)
 		fault( "got_packet", "didn't grab packet" );
 
+	pcapheader = hdr;
+
 	count_packets++;
         
 	ippacket=(struct ip *)(packet + datalink_size);

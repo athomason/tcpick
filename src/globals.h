@@ -9,6 +9,7 @@
  *
  */
 
+struct pcap_pkthdr *pcapheader;
 struct ip *ippacket;
 struct tcphdr *tcppacket;
 struct udphdr *udppacket;

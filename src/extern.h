@@ -10,6 +10,7 @@
  */
 
 /* FIXME: it seems written by a ogre */
+struct pcap_pkthdr *pcapheader;
 extern struct ip *ippacket;
 extern struct tcphdr *tcppacket;
 extern struct udphdr *udppacket;

@@ -76,7 +76,8 @@ struct CONN
 	
 	struct CONN * next; /* pointer for the next ring of the chain */
 	
-	time_t lasttime; /* time of last packet in connection */ 
+	struct timeval firsttime; /* receipt time of first packet in connection */
+	time_t lasttime; /* processing time of last packet in connection */
 };
 
 

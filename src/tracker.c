@@ -82,6 +82,7 @@ newconn( struct CONN * prev_ring )
 	
 	conn->num = count_conns;
 
+	memcpy(&conn->firsttime, &pcapheader->ts, sizeof(struct timeval));
 	conn->lasttime = time(NULL);
 	
 	status_switch( prev_ring, SYN_SENT );
@@ -99,9 +100,9 @@ int rmconn( struct CONN * prev_ring )
 	if( curr->next == NULL )
 		last_conn = prev_ring;
 	
-	free_desc( &(curr->client), 1);
-	if (flags.writer.type == UNIQUE) free_desc( &(curr->server), 0);
-	else free_desc( &(curr->server), 1);
+	free_desc( &(curr->client), 1, curr);
+	if (flags.writer.type == UNIQUE) free_desc( &(curr->server), 0, curr);
+	else free_desc( &(curr->server), 1, curr);
 	S_free( curr );
 
 	conn = first_conn;
@@ -125,7 +126,7 @@ int rmconn( struct CONN * prev_ring )
 		count_opened--;
 }
 
-int free_desc( struct HOST_DESC * desc, int freedescfilename )
+int free_desc( struct HOST_DESC * desc, int freedescfilename, struct CONN * conn )
 /* frees the host descriptor and closes the file */
 {
 	struct FRAGMENT * tmp;
@@ -134,6 +135,8 @@ int free_desc( struct HOST_DESC * desc, int freedescfilename )
 		fclose( desc->file );
 		if (flags.writer.type == UNIQUE)
 			desc->oth->file = NULL;
+		struct timeval t[2] = { conn->firsttime, conn->firsttime };
+		utimes( desc->filename, t );
 	}
 	if( desc->filename && freedescfilename ) {
 		S_free( desc->filename );
