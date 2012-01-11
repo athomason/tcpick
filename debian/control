@@ -1,0 +1,20 @@
+Source: tcpick
+Section: net
+Priority: optional
+Maintainer: William Vera <billy@billy.com.mx>
+Build-Depends: debhelper (>= 5.0.0), autotools-dev, libpcap0.8-dev
+Standards-Version: 3.8.1
+Homepage: http://tcpick.sourceforge.net
+
+Package: tcpick
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: TCP stream sniffer and connection tracker
+ This libpcap-based textmode sniffer can:
+  * track, reassemble and reorder TCP streams
+  * save the captured flows in different files or display them in the terminal
+  * display all the stream on the terminal with different display modes like
+    hexdump, hexdump + ascii, only printable characters, raw mode, colorized
+    mode ...
+  * handle several network interface types, including ethernet cards and PPP
+    interfaces

@@ -28,6 +28,7 @@
 /* FIXME: most code is duplicated: find a better solution! */
 
 #include "tcpick.h"
+#include "lookup.h"
 #include "extern.h"
 
 char * 

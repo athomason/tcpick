@@ -1,5 +1,5 @@
 /*
- * lookup.h -- header of host lookup engine
+ * datalink.h -- calculates datalink offsets
  * Part of the tcpick project
  *
  * Author: Francesco Stablum <duskdruid @ despammed.com>
@@ -26,25 +26,4 @@
  * USA.
  */
 
-#ifndef _LOOKUP_H
-#define _LOOKUP_H
-
-struct _l_node /* the node/leaf of the tree */
-{
-	/* tree stuff */
-	struct _l_node * parent;
-	struct _l_node * left;
-	char left_h;
-	struct _l_node * right;
-	char right_h;
-
-	/* data */
-	char * name;
-	struct in_addr ip;
-};
-
-char *lookup(struct in_addr ia);
-struct _l_node *_l_alloc(struct in_addr, char *);
-char *_l_get(struct in_addr);
-
-#endif
+char *datalink2str(int dl_id);

@@ -99,8 +99,9 @@ int rmconn( struct CONN * prev_ring )
 	if( curr->next == NULL )
 		last_conn = prev_ring;
 	
-	free_desc( &(curr->client) );
-	free_desc( &(curr->server) );
+	free_desc( &(curr->client), 1);
+	if (flags.writer.type == UNIQUE) free_desc( &(curr->server), 0);
+	else free_desc( &(curr->server), 1);
 	S_free( curr );
 
 	conn = first_conn;
@@ -124,7 +125,7 @@ int rmconn( struct CONN * prev_ring )
 		count_opened--;
 }
 
-int free_desc( struct HOST_DESC * desc )
+int free_desc( struct HOST_DESC * desc, int freedescfilename )
 /* frees the host descriptor and closes the file */
 {
 	struct FRAGMENT * tmp;
@@ -134,7 +135,7 @@ int free_desc( struct HOST_DESC * desc )
 		if (flags.writer.type == UNIQUE)
 			desc->oth->file = NULL;
 	}
-	if( desc->filename ) {
+	if( desc->filename && freedescfilename ) {
 		S_free( desc->filename );
 		desc->filename = NULL;
 	}

@@ -149,7 +149,7 @@ parse_display_rebuild ( char * s )
 void
 parse_args(int argc, char ** argv)
 {
-	char opt;
+	int opt;
 
 #ifdef HAVE_GETOPT_LONG
 	static struct option long_options[]=
@@ -386,7 +386,7 @@ parse_args(int argc, char ** argv)
 	if(flags.versionandquit) {
 		color( c_USAGE, stdout, PACKAGE_STRING "\n"
 			     " Author: " AUTHOR "\n"
-			     " for other info try `man 1 tcpick', or `%s --help'\n\n"
+			     " for other info try `man tcpick', or `%s --help'\n\n"
 			     TERMS ,TCPICK_NAME);
 		exit( TCPICK_SUCCESS );
 	}

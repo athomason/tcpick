@@ -25,8 +25,11 @@
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
+#define _GNU_SOURCE
+#include <string.h>
 #include "tcpick.h"
 #include "extern.h"
+#include "lookup.h"
 
 __inline__ char * 
 avail_filename(struct CONN * conn_ptr, 
@@ -241,6 +244,9 @@ out_flavour( enum FLAVOUR flavour,
 	if( flags.separator && ( out == stdout ) ) /* FIXME: sucks? */
 		color( c_SEPARATOR, stdout, SEPARATOR "\n" );
 
+	/* Temporary fix for CVE-2006-0048 */
+	if (buflen < 0) buflen = 0;
+	
 	switch ( flavour ) {
 	case HEX_ASCII_DUMP:
 		out_xa( out, buf, buflen );

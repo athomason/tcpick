@@ -49,6 +49,7 @@
 
 #include "tcpick.h"
 #include "globals.h"
+#include "datalink.h"
 
 char *errbuf[PCAP_ERRBUF_SIZE];
 struct bpf_program filter_compiled;
