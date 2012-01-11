@@ -1,0 +1,543 @@
+This is ChangeLog, produced by makeinfo version 4.7 from
+ChangeLog.texinfo.
+
+18 Jan 2005 0.2.1
+*****************
+
+unchanged from 0.2.1-rc1
+
+18 Jan 2005 0.2.1-rc1
+*********************
+
+     Michael Coulter (mjc:bitz.ca):
+
+   * Fixed headers include order for OpenBSD
+
+     Gianluigi Spagnuolo (kirash:phreaker.net):
+
+   * Added sigaction function to handle signals in a proper way.
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * Fixed -lpcap -lpcap etc. arguments to cc
+
+   * Fixed SIGALRM freeze bug
+
+   * Added setitimer workaround for *BSD systems (fork + sleep + kill)
+
+   * Added -e option to exit when a certain number of packets is reached
+
+   * Added atexit function
+
+9 Jan 2005 0.2.0-final
+**********************
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * Few bugfixes with -t and -td options
+
+
+30 Dec 2004 0.2.0-rc6
+*********************
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * expired functions are now checked every second, not every packet.
+     (use setitimer and the SIGALRM signal).
+
+   * added DLT_PPP, DLT_SLIP, DLT_SLIP_BSDOS and DLT_PPP_BSDOS support.
+     credits: SNiFf v0.3 by uLiX
+     http://www.s0ftpj.org/bfi/online/bfi10/BFi10-05.html
+
+   * added italian documentation (README.it, EXAMPLES.it, INSTALL.it,
+     tcpick_italian.8)
+
+
+25 Dec 2004 0.2.0-rc5
+*********************
+
+     Gianluigi Spagnuolo (kirash:phreaker.net):
+
+   * Added signal support + statistics (packets sniffed and connection
+     tracked) in a similar way to tcpdump.
+
+   * Reorganized tcpick.c
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * Added autogen.sh script
+
+   * Fixed bug of `-D' option
+
+   * Updated to automake/aclocal 1.9.3
+
+
+14 Dec 2004 0.2.0-rc4
+*********************
+
+     Gianluigi Spagnuolo (kirash:phreaker.net):
+
+   * found bug in avail_filename (write.c): too few arguments to
+     printf: fixed.
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * Now '\r' and '\t' charachters are printable in 'P' and 'U' modes.
+
+   * MacOSX "BIOCSRTIMEOUT: Invalid argument" bug should be fixed.
+
+   * port aligment in status displayer fixed (simplified)
+
+
+12 Dec 2004 0.2.0-rc3
+*********************
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * added date-timestamp
+
+   * removed all typedefs. Now structures and unions should be better
+     recognizable (now names of types are UPPER-CASE)
+
+   * Added .EDITME files for those people that have troubles with the
+     ./configure script
+
+
+30 Nov 2004 0.2.0-rc2
+*********************
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * Timeout value is now set by `-X' option, because `-t' will be used
+     for timestamps in the future.
+
+   * Filenaming system is now chosen with the `-F' option.
+
+     Artyom Khafizov:
+
+   * `-D num' option will cause tcpick to create subdirectories, each
+     for a desired number of sessions.
+
+
+22 Nov 2004 0.2.0-rc1
+*********************
+
+     Artyom Khafizov:
+
+   * Added EXPIRED status for connection tracked with a -t option to
+     choose       an appropriate timeout (default is 600)
+
+   * Fixed many memory leaks
+
+   * Added a new way to write the stream to files, using directories
+
+   * Added an experimental file naming system
+
+     Buck Huppmann (buckh:pobox.com) and Artyom Khafizov ( both have
+     had the same good idea :^D ):
+
+   * Added RESET status for connections tracked. (RST-flagged packets
+     will delete the connection).
+
+     Federico Castaneda (F_CASTANEDA:crm.com.ar):
+
+   * Added UDP support
+
+     Francesco Stablum (duskdruid:despammed.com):
+
+   * Debug messages are now available only with the -DTCPICK_DEBUG
+     argument given to the compiler.
+
+   * Changed signing key! Please read public_key_message.txt and check
+     the revocation certificate public_key_OLD.revoke
+
+
+08/09/04 0.2.0-devel2
+*********************
+
+   * Segmentation fault bug fixed (with `u' tcpick tried to free 2 times
+     the same heap address and closed 2 times the same file).  (Saumil
+     Shah discovered it)
+
+   * Bugfix: `u' flag of `-w' worked as with `b' flag either if `b'
+     wasn't choosen.
+
+07/09/04 0.2.0-devel1
+*********************
+
+   * Robert Scheck fixed tcpick manual section in a `printf'
+
+   * Saumil Shah feature request done:
+
+     the flag 'u' to the '-w' option enables tcpick to write sniffed
+     data in a unique file, with client and server data mixed together.
+
+     the flag 'b' to the '-w' option enables tcpick to write a banner to
+     the unique file that introduces server and client data.
+
+
+28/08/04 0.1.24
+***************
+
+   * BSD support _should_ be completed
+
+   * added "suicide" and "fault" functions
+
+   * some code cleanup
+
+   * fixed netinet/ip.h check bug in the configure script for FreeBSD
+     machines
+
+   * fixed hexdump bug
+
+   * fixed reset color. Background color is now not black, but the
+     terminal default
+
+   * added the balanced tree to the lookup engine
+
+   * applied patch by GLS to improve compatibility with openbsd 3.5 with
+     gcc 2.95.3
+
+   * Now closed connections are freed and delinked; files will be
+     closed.
+
+   * Added the -E and -Ef arguments
+
+   * Added the -Tf option
+
+   * Fixed the segmentation bug of the `-y' option
+
+   * added INTERNALS file (should be completed)
+
+03/06/04 0.1.23
+***************
+
+   * PFLOG support added by kirash aka GLS
+
+   * patch by Sebastian Prause: "I've created a little patch to make
+     tcpick work with pppoe interfaces on NetBSD (which use
+     DLT_PPP_ETHER) and wanted to share it, so here it is..."
+
+   * now the options for displaying the payload should be prefixed by -y
+     I have added another set of displaying option, that are prefixed
+     with -b. The -b options are useful to view data only when
+     acknowledged (exactly like data written to files) and with this is
+     particulary useful the raw mode (-bR) that you can use if you want
+     to redirect data with a pipe to another software.
+
+   * The newline carachter is suppressed when displaying the payload of
+     the packet or an acknowledged stream in the case there are no
+     banners except the case of the hexdump's.
+
+   * Added the "-pipe" option, by a wish of loopback. See manpage for
+     details.
+
+   * Now you are able to choose to write to file only data of clients or
+     servers or both, with the additional flags `C' and `S' to the
+     option `-w' (omitted means "both").
+
+   * Many, many changes, code cleanups and improvement made by whyx in
+     fragments.c and lookup.c
+
+   * With the new option `-T<number>', it is now possible to track only
+     the first <number> connections, the following will be discarded by
+     the tracker engine. This is useful for the `-w' and `-b' options;
+     for `-y' and `-h' it has no effect, because they aren't part of
+     the tracker.
+
+   * In the hexdump+ascii red dots rapresents now the unprintable
+     carachter.
+
+   * the lenght of the payload is now displayed in the packet banner
+
+   * rewritten the core of verify.c and fragments.c
+
+   * now connections with equal ip addresses and ports are stored in
+     different files
+
+   * files dumped with tcpick -w* options are now saved vith ".tcpick"
+     extension
+
+   * bugfix on datalink.c by kirash aka GLS
+
+   * deleted alloc.c and match.c
+
+   * used the "linux" 8-spaces indentation
+
+   * added packet separator (by a Simone Gianni's wish)
+
+   * added the `-p' flag to avoid to put the network interface in
+     promiscuous mode (I'm not sure it works) (by a Simone Gianni's
+     wish)
+
+   * Rewritten manpage. Read it! There are lots of changes in the
+     options!
+
+   * I have tested tcpick to sniff a file via ftp, and the md5sums were
+     equal. The tar.gz archive I have downloaded was more than 2MB
+     long. Other tests are confirming me that the newly-written code
+     works in the right way.
+
+
+07/03/04 0.1.22-test2
+*********************
+
+   * now output files are opened in "a" (only append) mode
+
+   * now data are written with "fwrite()" + ferror (thanks ^^Gimli^^)
+
+06/02/04 0.1.22-test1
+*********************
+
+   * corrected bug in datalinktoa() by sbi!
+
+   * Davide Benini: corrected bug in calling S_calloc with only one
+     argument
+
+   * added S_malloc function
+
+   * now data are written with the write() function
+
+28/02/04 0.1.21
+***************
+
+   * Added src/ directory for the sources
+
+   * Added a `flags` struct
+
+   * Patch by Penelope Fudd: added `-r' option to read tcpdump
+     filedumps: this is a very nice feature :)
+
+   * Improved debugging system with dprintf (thank you ShackaN!)
+
+   * Changed name of the `stack' memory block into `tracker'
+
+   * Increased speed of the connection tracking system by adding many
+     return's instruction (instead of using some damned variables like
+     `loop_finished' and `result_bool') in verify() and match().
+
+   * Added a "chained" tracker: now it is possible to track an infinite
+     number of connections (thank you mainman!)
+
+   * Fixed bug that server file and client file were switched
+
+30/01/04 0.1.20
+***************
+
+   * added displaying of unprintable carachters (that are also dots in
+     -P option) with red color.
+
+   * added hexdump mode colorizer
+
+   * with option -C2 it is now possible see different colors depending
+     on the connection tracked (only status banners) (file colortrack.c)
+
+   * added connection numbering (second field in status banner)
+
+   * added time writing on banners and packet headers(time.c)
+
+15/01/04 0.1.19
+***************
+
+   * added <pcap/pcap.h> header support (i.e. trustix)
+
+   * added DLT_PFLOG/DLT_NULL/DLT_RAW/DLT_IEEE802_11 header support
+     (not tested!!!)
+
+   * added datalinktooffset function (datalink.c)
+
+   * added Push/Fin/Ack packet support
+
+   * added support for those systems that don't have getopt_long and
+     getopt.h     header (was a problem in AIX systems, thank you
+     Alberto     'JCN-9000' Varesio)
+
+   * added experimental color option (-C): it is very nice!      It
+     should be helpful to read the output of tcpick.
+
+   * added new file colors.c (read code comments to know about the
+     original author)
+
+11/01/04 0.1.18
+***************
+
+   * fixed ridicolous bug of "resulting_bool==" in match.c
+
+   * fixed FIN-WAIT-2 bad detection
+
+   * added TIME-WAIT status detection
+
+   * added CLOSED status detection
+
+11/01/04 0.1.18-test3 (UNSTABLE - BUGGY - ONLY FOR DEVELOPERS)
+**************************************************************
+
+   * Precedent tarball -test2 was damaged (thank you kirash (aka GLS)
+     to said it to me)
+
+08/01/04 0.1.18-test2 (UNSTABLE - BUGGY - ONLY FOR
+**************************************************
+
+DEVELOPERS)
+   * added DLT_NULL support by kirash (aka GLS)
+
+   * fixed the ridicolous bug in -test1 (a if statement without braces)
+
+   * rewritten functions verify() and match() are now fully working
+
+08/01/04 0.1.18-test1 (UNSTABLE - BUGGY - ONLY FOR
+**************************************************
+
+DEVELOPERS)
+   * completely rewritten match() and verify() functions
+
+   * added new files datalink.c and match.c
+
+   * datalink managing modified to be compatible on systems that don't
+     #define all datalinks
+
+05/01/04 0.1.17
+***************
+
+   * ip.h header ported internally to the package for compatibility with
+      BSD systems
+
+   * patch by kirash: changes to myheader.h, lookup.c and stack.c in
+     order to   improve compatibility on BSD systems
+
+   * added FIN-WAIT-1 status tracking
+
+05/01/04 0.1.16b
+****************
+
+   * previously source tarball was corrupted   thank you Robert Scheck
+
+05/01/04 0.1.16
+***************
+
+   * added protection to memory allocation and freeing   in the file
+     alloc.c   The new routines are called S_calloc and S_free and
+     display messages when in debug mode.
+
+   * added file PLATFORMS, which describes platform tested   thanks
+     nextime, Alt[O]s and Kaioh!
+
+04/01/04 0.1.15b
+****************
+
+   * fixed bug in ./configure script
+
+04/01/04 0.1.15 (early morning)
+*******************************
+
+   * "STATUS" string is now nicer :)
+
+   * tcp.h header is now internal, to improve compatibility   with *BSD
+     systems
+
+   * added new header file "myheaders.h" that should keep track   of
+     all headers used in the project
+
+   * added definitively my public key in the package
+
+03/01/04 0.1.14
+***************
+
+   * reimplemented packet sniffer engine   (now it is managet by
+     pcap_loop :)
+
+   * added configure script, Makefile.in   config.h.in and other
+     macro-automated files
+
+   * fixed inet_ntoa bug (thank you kirash)
+
+09/12/03 0.1.13
+***************
+
+   * fixed name lookup: there will be only one dns query   for each
+     host that doesn't have a name
+
+   * removed source port in log filenames
+
+   * added port into service translation
+
+   * Makefile improved
+
+   * now the tcpick manual page is in section 1!
+
+07/12/03 0.1.12
+***************
+
+   * improved and corrected name lookup feature
+
+05/12/03 0.1.11-unstable
+************************
+
+   * added host lookup cached feature (BUGGY!!)
+
+04/12/03 0.1.10
+***************
+
+   * added write status to file feature (-wS)
+
+03/12/03 0.1.9
+**************
+
+added lot of write to file features:
+   * header writing, (-wH)
+
+   * only printable charachters writing (-wP)
+
+   * unprintable charachters transformed into hexadecimal code (-wU)
+
+   * added other options (see manpage for details) -s -P -R -U
+
+01/12/03 0.1.8
+**************
+
+   * added write to file feature (-w[R])
+
+   * added write to file in hexdump mode feature (-w[xX])
+
+   * added new file write.c
+
+30/11/03 0.1.7
+**************
+
+   * fixed bad hex dump manamagment
+
+   * some changes in the options (see OPTIONS file for details)
+
+29/11/03 0.1.6
+**************
+
+   * now you can display data in the packet in hexdump mode (-x) and
+     you can watch at the printable ascii charachters too, using -X
+     option
+
+28/11/03 0.1.5
+**************
+
+   * better options managment, including long options
+
+   * added data showing in hexadecimal
+
+   * added -silent mode
+
+   * done manpage prototype
+
+27/11/03 0.1.4
+**************
+
+   * fixed file writing: now files are opened in "w" mode
+
+   * added fflush istruction when output files are updated
+
+   * fixed bug: now all connection are tracked, not only the first
+
+24/11/03 0.1.1
+**************
+
+   * fixed bad managing of payload (now ack packets whith no data are
+     dropped)
+

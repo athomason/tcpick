@@ -1,0 +1,33 @@
+=========
+PLATFORMS 
+=========
+
+tcpick compilation has been tested on these platforms:
+
+* Slackware 9.1 with gcc 3.2.3 and linux 2.4.22 (my machine: Athlon i686)
+* Slackware 9.1 with gcc 3.2.3 and linux 2.4.22 (thank you AdHe5)
+* Slackware 9.1 with linux 2.4.23 on a Intel Celeron (thank you Alt[O]s)
+* Slackware 9.0 with linux 2.4.22 on a Pentium 4 (thank you Kaioh)
+* Gentoo 1.4 with gcc 3.2.2 and linux 2.6.0 (thank you hannibal)
+* SuSE Linux 9.0 (thak you Alberto Panu)
+* debian sid (unstable) with gcc 3.3.3 and libpcap-dev 0.7.2-5 on a linux 2.4.22 (thank you Maurizio Lemmo `Tannoiser')
+* FreeBSD 5.2-RC (thank you Cristiano Deana)
+* FreeBSD 5.0-RELEASE-p19 (i386) with gcc 3.2.1 (thank you Kirillov)
+
+Failed tests:
+* IBM AIX 4.3.3.11 (no getopt.h) (thank you Alberto 'JCN-9000' Varesio)
+* darwin 7.2 on ppc(mac) (`DLT_PPP_ETHER' undeclared) (thank you gap)
+* FreeBSD 4.9-RELEASE (getopt.h: No such file or directory) (thank you Cristiano Deana)
+
+The following tests are provided by nextime: thank you very much!
+* Debian SID with gcc 3.3.1 and linux 2.4.23 on x86
+* Debian SID with gcc 3.3.1 and linux 2.6.0  on x86
+* Debian woody with gcc 2.95 and linux 2.4.23 on x86
+* Debian SID with gcc 3.3.0 and linux 2.4.23 on mips ( SGI Indy ) 
+* Debian SID with gcc 3.3.1 and linux 2.4.23 on PPC
+* Debian SID with gcc 3.3.0 and linux 2.4.23 on Sparc64 
+* FreeBSD 5.1 with gcc 3.3.1 on Sparc64
+* Linux from scratch with gcc 3.3.0 and linux 2.4.23 on Alpha 
+Failed tests by nextime:
+* NetBSD 1.6.1 with gcc 3.3.0 on m68k 
+* GNUStep gcc: 2.95 on NeXT Cube

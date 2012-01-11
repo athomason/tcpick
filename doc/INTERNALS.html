@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+<title>tcpick looked from the inside</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="tcpick looked from the inside">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">tcpick looked from the inside</h1>
+
+
+   <p>The starting function <code>main</code> is in the file <code>tcpick.c</code>. 
+Command-line arguments are parsed by <code>parse_args</code>
+(<code>args.c</code>).
+
+   <p>The packet capture engine is powered by the pcap library, that
+handles, with the function <code>pcap_loop</code> the callback loop function
+<code>got_packet</code> (<code>loop.c</code>).
+
+   <p>When a packet has been captured by <code>pcap_loop</code> it will be
+calculated the offset of the ip header (<code>ippacket</code>), the offset
+of the tcp header (<code>tcppacket</code>). Finally the function
+<code>verify</code> (<code>verify.c</code>) will be called to analyze the packet.
+
+   <p>Packet offset and size are declared globally (<code>extern.h</code> and
+<code>globals.h</code>) not to allocate the stack every time a function that
+works on the packet is called
+
+   <p>The source code that contains the function <code>verify</code> begins with
+several <code>#define</code>'s used to verify if a sniffed packet match an
+inizialized connection (or else if it creates a new one).
+
+   <p>All connections tracked are stored in a linked list (i hope I will be
+able to replace it with an efficient balanced tree).
+
+   <p>The <code>struct host_descriptor_t</code> describes one side of the tcp
+connection (the server or the client). The function <code>verify</code>
+detects the changes of the status of the tracked connection and update
+it with the function <code>status_switch</code> (<code>tracker.c</code>), that
+calls the function <code>display_status</code> to notify the user of this
+change and deletes the connection if it is <code>CLOSED</code>
+
+   <p>When data are transmitted (<code>IS_DATA_FLOW</code>) the function
+<code>established_packet</code> (<code>verify.c</code>) is called. 
+This function detects if the
+packet is an acknowledgment one or a data one. 
+Unacknowledged data
+packets are stored in a linked-list
+by the function <code>addfr</code> (<code>fragments.c</code>). 
+When data are acknowledged by
+a <code>ack</code>,
+the function <code>flush_ack</code> (<code>fragments.c</code>) is called.
+
+   <p>In <code>flush_ack</code> acknowledged data are flushed
+to an output stream (display or file)
+by the function <code>wrebuild</code> (<code>write.c</code>).
+
+   <p>The function <code>out_flavour</code> (<code>write.c</code>)
+is used to select the format of the
+data wished by the user.
+
+</body></html>
+

@@ -1,0 +1,113 @@
+================
+TCPICK INTERNALS
+================
+                                               updated to version 0.1.2
+
+tcpick is a sniffer libcap-based.
+tcpick keeps track of all connection using a special structure,
+conn_t, used to keep in memory the connection:
+
+ stack.c:
+ struct conn_t
+ {
+   int status; /* 1 means SYN_SENT,
+ 		 2 means SYN_RECEIVED,
+ 		 3 means ESTABLISHED,
+ 		 4 ??? FIXME
+ 	      */
+   u_int32_t client_ip; /* ip address of client */
+   u_int32_t server_ip; /* ip address of server */
+   u_int32_t client_seq;
+   u_int32_t server_seq;
+   u_int16_t client_port;
+   u_int16_t server_port;
+   u_int32_t client_seq_off;
+   u_int32_t server_seq_off;
+   int server_packets_num;
+   int client_data_size; /* size of all data transmitted from client*/
+   int server_data_size; /* size of all data transmitted from server*/
+   char *client_data;    /* data */
+   char *server_data;    /* data */
+   FILE *client_file;
+   FILE *server_file;
+   char *client_filename;
+   char *server_filename;
+   FILE *both_file;
+   int file_opened;
+ };
+
+All connection tracked are kept in a special "stack" (but isn't
+properly a stack) that I declared in that way:
+
+ stack.c:
+ struct conn_t ** stack;
+
+it is a pointer to the first address of a block of free data of size
+MAXCONN, allocated with calloc. Every address of this structure points
+to a conn_t structure (allocated when a new connection is tracked).
+
+After capturing data tcpick finds the data offset (skipping tcp
+options) and passes the packet to the function verify():
+ 
+ stack.c: 
+ int verify(struct ip *ippacket,     
+	    struct tcphdr *tcppacket,
+	    u_char *payload, /* pointer to the data(offset)*/
+	    int payload_len) /* data lenght */
+
+the function verify() analyzes the tcp flags and calls the function
+match():
+
+ stack.c: 
+ int match(int status,
+	  struct ip *ippacket,
+	  struct tcphdr *tcppacket,
+	  u_char *payload,
+	  int payload_len)
+
+the first argument is a "status" flag, that describes what kind of
+flag are set. Then, there is a cycle that "scans" the "stack" seeking
+for a conn_t that matches with the received packet. In that way, if
+the packet matches with a conn_t structure, the status flag of the
+structure is changed properly with this function:
+ 
+ stack.c:
+ int status_switch(struct conn_t * conn,int status)
+
+status_switch, in that way, print on the terminal the new status of
+the connection tracked, according to the status flag:
+
+ status==1 => SYN-SENT
+ status==2 => SYN-RECEIVED
+ status==3 => ESTABLISHED
+ status==4 => FIN-WAIT-1
+ (other statuses should be developed soon!)
+
+If the connection is just ESTABLISHED (conn_ptr->status_flag==0)
+the packet is passed to the function data_write():
+ 
+ stack.c:
+ int data_write(struct conn_t * conn_ptr,
+	       u_int32_t data_off, /* offset from beginning */
+	       u_char * payload,
+	       int payload_len,
+	       int part /* client (1) or server (2) ? */
+	       )
+
+where data_off is the actual seq field minus the first minus one:
+  data_off=(ntohl(tcppacket->seq)-ntohl((*stack_ptr)->server_seq))-1;
+
+the purpose of data_write is simple: write the payload to memory.
+Then, if the file_flag is set, these data are written to disk through
+the function file_write():
+
+ stack.c:
+ int file_write(struct conn_t * conn_ptr,
+	       u_int32_t data_off, /* offset from beginning */
+	       u_char * payload,
+	       int payload_len,
+	       int part /* client (1) or server (2) ? */
+	       )
+
+Conclusions: tcpick requires people willing to debug/improve it,
+             do you wanna get involved? :)

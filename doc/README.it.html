@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+<title>LEGGIMI</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="LEGGIMI">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">LEGGIMI</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_TOC0" href="#TOC0">home page</a>
+<li><a name="toc_TOC1" href="#TOC1">Altri file da leggere</a>
+<li><a name="toc_TOC2" href="#TOC2">contribuisci!</a>
+<li><a name="toc_TOC3" href="#TOC3">Note sulla licenza</a>
+</li></ul>
+</div>
+
+
+
+<!-- capitolo primo -->
+<p>tcpick e' uno sniffer con interfaccia testuale basato sulle
+celeberrime librerie libpcap. 
+Tra le sue funzioni quelle piu' importanti sono la capacita' di
+tracciare flussi di dati trasferiti mediante il protocollo tcp e la
+possibilita' di salvare i dati catturati all'interno di files, oppure
+di visualizzarli direttamente nel terminale. 
+Puo' essere utilizzato per il download passivo di file trasferiti via
+ftp (per l'http e' neccessaria una ulteriore decodifica a livello applicazione). 
+Tra le modalita' di visualizzazione dei dati ci sono: esadecimale,
+esadecimale con ascii (ovvero il classico hexdump), visualizzazione
+dei soli caratteri stampabili, modalita' &ldquo;raw&rdquo; ecc. 
+E' disponibile anche una modalita' a colori per rendere l'output piu'
+leggibile. 
+Se viene posizionato su un gateway puo' essere utilizzato per
+osservare le attivita' degli utenti di una rete interna. 
+Inoltre e' adatto ad essere utilizzato con strumenti testuali a riga
+di comando come grep, sed e awk.
+
+   <p>Un semplice esempio per visualizzare le richieste http:
+
+<pre class="example">     # tcpick -i ppp0 -yP | grep GET
+</pre>
+   <h2 class="unnumbered"><a name="TOC0"></a>home page</h2>
+
+<p>http://tcpick.sourceforge.net
+
+<h2 class="unnumbered"><a name="TOC1"></a>Altri file da leggere</h2>
+
+     <ul>
+<li>AUTHORS
+<li>OPTIONS
+<li>KNOWN-BUGS
+<li>INSTALL
+<li>EXAMPLES.it
+<li>TODO
+<li>ChangeLog
+<li>COPYING
+<li>public_key.asc (key to check package signatures)
+<li>public_key_message.txt
+</ul>
+
+<h2 class="unnumbered"><a name="TOC2"></a>contribuisci!</h2>
+
+<p>tcpick e' un progetto open-source, e, in quanto tale, sono graditi
+qualsiasi tipo di richieste di funzionalita', report di bug, patch e
+quanto altro. 
+Questa e' la mailing list,
+che puoi utilizzare per segnalare qualsiasi problema:
+
+     <ul>
+<li>indirizzo
+
+     <p><b>tcpick-project@lists.sourceforge.net</b>
+<li>Archivio
+http://sourceforge.net/mailarchive/forum.php?forum=tcpick-project
+<li>Pagina di iscrizione
+http://lists.sourceforge.net/lists/listinfo/tcpick-project
+</ul>
+
+<h2 class="unnumbered"><a name="TOC3"></a>Note sulla licenza</h2>
+
+<p>Tcpick e' rilasciato con la licenza GNU GPL. Per ulteriori
+informazioni leggere il file COPYING (in inglese)
+
+</body></html>
+

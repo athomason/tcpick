@@ -1,0 +1,49 @@
+#                                               -*- Autoconf -*-
+# Process this file with autoconf to produce a configure script.
+
+BUILD_N=1
+define([__VERSION], [0.2.1])
+
+# if -test comment download.inc generation on package.sh
+AC_PREREQ(2.59)
+AC_INIT([tcpick],[__VERSION],[duskdruid@despammed.com ])
+AM_INIT_AUTOMAKE(tcpick, [__VERSION])
+# AM_CONFIG_HEADER([src/config.h])
+# Checks for programs.
+AC_PROG_CC
+# Checks for libraries.
+
+define([__LPCAP_ERROR], [Latest libpcap libraries required; see INSTALL doc for more info])
+AC_CHECK_LIB([pcap], pcap_loop,,
+AC_MSG_ERROR([__LPCAP_ERROR]))
+
+# Checks for typedefs, structures, and compiler characteristics.
+AC_C_CONST
+AC_FUNC_MALLOC
+AC_FUNC_MEMCMP
+
+# Checks for header files.
+AC_HEADER_STDC
+AC_CHECK_HEADERS([arpa/inet.h netdb.h netinet/in_systm.h netinet/udp.h netinet/in.h sys/socket.h getopt.h pcap.h pcap/pcap.h time.h sys/time.h errno.h stdarg.h signal.h])
+
+
+AC_CHECK_HEADERS([netinet/ip.h net/if.h netinet/if_ether.h], [], [],
+[#if HAVE_SYS_TYPES_H
+# include <sys/types.h>
+# endif
+#if HAVE_NETINET_IN_H
+# include <netinet/in.h>
+# endif
+#if HAVE_NETINET_IN_SYSTM_H
+# include <netinet/in_systm.h>
+# endif
+])
+
+# Checks for library functions.
+AC_CHECK_FUNCS([ gethostbyaddr getservbyport gettimeofday inet_ntoa strdup strndup strtol getopt getopt_long asctime atoi getuid isascii isgraph iscntrl vfprintf localtime vprintf setuid perror signal setitimer strftime time unlink mkdir atexit _exit])
+
+AC_CONFIG_HEADERS(src/config.h)
+AC_CONFIG_FILES(Makefile src/Makefile)
+
+AC_OUTPUT
+

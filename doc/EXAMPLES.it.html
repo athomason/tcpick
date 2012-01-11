@@ -1,0 +1,106 @@
+<html lang="en">
+<head>
+<title>ESEMPI</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="ESEMPI">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">ESEMPI</h1>
+<h2 class="unnumbered"><a name="TOC0"></a>Visualizzare lo stato delle connessioni tracciate</h2>
+
+<p>Tcpick e' uno sniffer in grado di tracciare le connessioni e
+determinarne lo stato (SYN-SENT, SYN-RECEIVED e cosi' via).
+
+<p>Per vedere tcpick in azione si puo' eseguire questo comando da root:
+
+<pre class="example">     # tcpick -i eth0 -C
+</pre>
+   <p>L'opzione `-C' serve ad abilitare i colori per rendere la lettura
+dell'output piu' gradevole, mentre l'opzione -i serve a specificare
+l'interfaccia di rete.
+
+   <p>Creando un po' di traffico (aprendo, ad esempio una pagina web)
+dovreste vedere un output simile a questo:
+
+<pre class="example">     23:07:42.672171  1      SYN-SENT       12.34.56.78:41599 &gt; 123.123.123.123:http
+     23:07:42.822239  2      SYN-SENT       12.34.56.78:41600 &gt; 32.13.21.32:5973
+     23:07:42.826634  3      SYN-SENT       12.34.56.78:41601 &gt; 123.45.67.89:5555
+     23:07:42.854681  4      SYN-SENT       12.34.56.78:41602 &gt; 1.2.3.4:56789
+     23:07:43.084242  1      SYN-RECEIVED   12.34.56.78:41599 &gt; 123.123.123.123:http
+     23:07:43.087045  1      ESTABLISHED    12.34.56.78:41599 &gt; 123.123.123.123:http
+     23:07:44.061311  5      SYN-SENT       12.34.56.78:41603 &gt; 10.20.30.40:8888
+</pre>
+   <h2 class="unnumbered"><a name="TOC1"></a>Visualizzare il contenuto dei pacchetti e l'header</h2>
+
+<p>Se volete vedere i dati contenuti nei pacchetti, l'operazione
+richiesta e' semplicissima:
+
+<pre class="example">     # tcpick -i eth0 -C -yP -h -a
+</pre>
+   <p>`-yP' significa &ldquo;visualizza il contenuto del pacchetto&rdquo;, `-h'
+abilita la visualizzazione dell'header (semplificato) e `-a' abilita
+la risoluzione dei nomi via dns. 
+I caratteri non stampabili vengono visualizzati come punti.
+
+<h2 class="unnumbered"><a name="TOC2"></a>Visualizzare i dati del client in una connessione smtp</h2>
+
+<pre class="example">     # tcpick -i eth0 -C -bCU -T1 "port 25"
+</pre>
+   <p>`-bCU' significa: ricostruisci il flusso tcp (`-b') ma visualizza solo
+la parte attinente al client (`C') e i caratteri non stampabili
+vengono visualizzati tramite codice esadecimale (`U').
+
+   <p>`-T1' significa: tracciare solo la prima connessione incontrata
+
+   <p>&ldquo;port 25&rdquo; e' il filtro per catturare solo connessioni smtp.
+
+<h2 class="unnumbered"><a name="TOC3"></a>scaricare un file in modo passivo</h2>
+
+<p>Qui' viene il bello!
+
+<pre class="example">     #tcpick -i eth0 -wR ``port ftp-data''
+</pre>
+   <p>Quando il file e' stato completamente trasmesso (CLOSED) controlla
+nella directory corrente e troverai dei file simili a questi:
+
+<pre class="example">     # ls *.tcpick
+     client_123.45.67.89_98.76.54.32_34567.tcpick
+     server_123.45.67.89_98.76.54.32_34567.tcpick
+</pre>
+   <p>Ottimo! Se esegui il comando `$ file *.tcpick' vedrai che e' proprio
+cio' che e' stato scaricato, e un md5sum garantira' e' stato sniffato
+completamente e senza errori.
+
+<h2 class="unnumbered"><a name="TOC4"></a>Redirigere la prima connessione incontrata ad un programma</h2>
+
+<p>Devi scegliere se sniffare la parte relativa al server o al client,
+poiche' ovviamente non si vuole mischiare entrambi i flussi nello
+standard output. E' estremamente semplice; ecco alcuni esempi:
+
+<pre class="example">     # tcpick -i eth0 --pipe client "port 80" | gzip &gt; risposta_http.gz
+</pre>
+   <p>oppure
+<pre class="example">     # tcpick -i eth0 --pipe server "port 25" | nc foobar.net 25
+</pre>
+   <p>Ora usa la tua immaginazione e se credi ne valga la pena, contattami
+per farmi sapere che razza di alchimie hai inventato ;^)
+(magari includero' degli script nel pacchetto sorgente).
+
+   <p>Buon divertimento!
+
+</body></html>
+

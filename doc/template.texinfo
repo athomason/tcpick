@@ -1,0 +1,28 @@
+\input texinfo  @c -*-texinfo-*-
+@setfilename FILENAME
+@settitle TITLE
+@c @setchapternewpage odd
+@c @paragraphindent asis
+
+
+
+@c 1st page:
+@titlepage
+@title TITLE
+@subtitle subtitle
+@author Francesco 'DuskDruid' Stablum
+
+@c copyright page
+@end titlepage
+@headings single
+
+
+@c Contenuti
+@contents
+
+@c capitolo primo
+@chapter CHAPTER
+
+
+
+

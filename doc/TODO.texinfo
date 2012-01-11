@@ -1,0 +1,122 @@
+\input texinfo  @c -*-texinfo-*-
+@setfilename TODO
+@settitle TODO
+@c @setchapternewpage odd
+@c @paragraphindent asis
+
+
+
+@c 1st page:
+@titlepage
+@title TODO
+@subtitle subtitle
+@author Francesco 'duskdruid' Stablum
+
+@c copyright page
+@end titlepage
+@headings single
+
+
+@c Contenuti
+@contents
+
+@c capitolo primo
+
+@itemize
+@item
+good homepage for tcpick (italian too)
+@item
+fix bugs in KNOWN-BUGS and FIXMEs
+@end itemize
+
+@unnumbered for 0.2.2 version (Feb 2005)
+
+@itemize
+@item
+more speed for port->service resolution method.
+@item
+flag to distinguish between client and server data in a
+tcp-bidirectional output file with an introductive banner.
+@item
+add acknowledged stream banner (i.e. ``data (offset:1234) sent from
+client: foobar'') 
+
+@item
+statistics: 
+@itemize
+@item 
+bytes/second, connections resetted, connections/hour
+@item 
+total connections  
+@item
+total bytes transferred by @{clients|servers@} 
+@item
+total packets received / lost
+@end itemize
+
+@item
+(other?)
+
+@end itemize
+
+@unnumbered for 0.2.3 version (Mar 2005)
+
+@itemize
+@item
+balanced/avl tree in the connection tracking engine
+@item
+improve speed by using function pointers
+
+@item
+(other?)
+
+@end itemize
+
+@unnumbered for 0.3.0 version (2005)
+
+@itemize
+@item
+A more coherent EXPIRED status detection
+@item
+XML output
+@item 
+managing DLT_LOOP, DLT_IEEE802_11 and DLT_NULL fully tested
+@item
+complete INTERNALS file (there is lot to write)
+@item
+http/yahoo decoder by Saumil Shah (separate package?)
+@item
+increase tracking speed by adding a hash function or a `memcmp'
+(thanks to mainman's experience)
+@item
+increase speed by adding multithreading
+@item
+add a ``turbo'' mode (with the ./configure remove features)
+@item
+print only some status (i.e. only ESTABLISHED)
+@item
+custom filenaming pattern 
+@item
+writing the offsets and seqs to file and terminal
+colors
+@item
+ability to enable/disable _detailed_ header printing
+@item 
+write name lookups to a file (useful?)
+
+@item use the other nice libpcap functions (fully)
+@end itemize
+
+@unnumbered for the far future
+
+@itemize
+@item autodetect and name ftp and http files (external program?)
+@item autodect and decrypt ssh/ssl connections (external program?)
+@item "spider" mode: make a path of all urls visited by some hosts
+  (external program?)
+  (that will be a nice mode to see what kind of sites are hosts visiting)
+@item ncurses/gtk front-end
+@item RFC1149 compatibility and RFC3514 support
+@end itemize
+
+@bye

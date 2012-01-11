@@ -1,0 +1,116 @@
+\input texinfo  @c -*-texinfo-*-
+@setfilename EXAMPLES.it
+@settitle ESEMPI
+@c @setchapternewpage odd
+@c @paragraphindent asis
+
+
+
+@c 1st page:
+@titlepage
+@title Esempi d'uso di tcpick
+@c @subtitle subtitle
+@author Francesco 'duskdruid' Stablum
+
+@c copyright page
+@end titlepage
+@headings single
+
+@c capitolo primo
+
+@unnumbered Visualizzare lo stato delle connessioni tracciate
+
+Tcpick e' uno sniffer in grado di tracciare le connessioni e
+determinarne lo stato (SYN-SENT, SYN-RECEIVED e cosi' via).
+
+Per vedere tcpick in azione si puo' eseguire questo comando da root:
+
+@example
+# tcpick -i eth0 -C
+@end example
+
+L'opzione `-C' serve ad abilitare i colori per rendere la lettura
+dell'output piu' gradevole, mentre l'opzione -i serve a specificare
+l'interfaccia di rete.
+
+Creando un po' di traffico (aprendo, ad esempio una pagina web)
+dovreste vedere un output simile a questo:
+
+@example
+23:07:42.672171  1      SYN-SENT       12.34.56.78:41599 > 123.123.123.123:http
+23:07:42.822239  2      SYN-SENT       12.34.56.78:41600 > 32.13.21.32:5973
+23:07:42.826634  3      SYN-SENT       12.34.56.78:41601 > 123.45.67.89:5555
+23:07:42.854681  4      SYN-SENT       12.34.56.78:41602 > 1.2.3.4:56789
+23:07:43.084242  1      SYN-RECEIVED   12.34.56.78:41599 > 123.123.123.123:http
+23:07:43.087045  1      ESTABLISHED    12.34.56.78:41599 > 123.123.123.123:http
+23:07:44.061311  5      SYN-SENT       12.34.56.78:41603 > 10.20.30.40:8888
+@end example
+
+@unnumbered Visualizzare il contenuto dei pacchetti e l'header
+
+Se volete vedere i dati contenuti nei pacchetti, l'operazione
+richiesta e' semplicissima:
+
+@example
+# tcpick -i eth0 -C -yP -h -a
+@end example
+
+`-yP' significa ``visualizza il contenuto del pacchetto'', `-h'
+abilita la visualizzazione dell'header (semplificato) e `-a' abilita
+la risoluzione dei nomi via dns.
+I caratteri non stampabili vengono visualizzati come punti.
+
+@unnumbered Visualizzare i dati del client in una connessione smtp
+
+@example
+# tcpick -i eth0 -C -bCU -T1 "port 25"
+@end example
+
+`-bCU' significa: ricostruisci il flusso tcp (`-b') ma visualizza solo
+la parte attinente al client (`C') e i caratteri non stampabili
+vengono visualizzati tramite codice esadecimale (`U').
+
+`-T1' significa: tracciare solo la prima connessione incontrata
+
+``port 25'' e' il filtro per catturare solo connessioni smtp.
+
+@unnumbered scaricare un file in modo passivo
+
+Qui' viene il bello! 
+
+@example
+#tcpick -i eth0 -wR ``port ftp-data''
+@end example
+
+Quando il file e' stato completamente trasmesso (CLOSED) controlla
+nella directory corrente e troverai dei file simili a questi:
+
+@example
+# ls *.tcpick
+client_123.45.67.89_98.76.54.32_34567.tcpick
+server_123.45.67.89_98.76.54.32_34567.tcpick
+@end example
+
+Ottimo! Se esegui il comando `$ file *.tcpick' vedrai che e' proprio
+cio' che e' stato scaricato, e un md5sum garantira' e' stato sniffato
+completamente e senza errori.
+
+@unnumbered Redirigere la prima connessione incontrata ad un programma
+
+Devi scegliere se sniffare la parte relativa al server o al client,
+poiche' ovviamente non si vuole mischiare entrambi i flussi nello
+standard output. E' estremamente semplice; ecco alcuni esempi:
+
+@example
+# tcpick -i eth0 --pipe client "port 80" | gzip > risposta_http.gz
+@end example
+oppure
+@example
+# tcpick -i eth0 --pipe server "port 25" | nc foobar.net 25
+@end example
+
+Ora usa la tua immaginazione e se credi ne valga la pena, contattami
+per farmi sapere che razza di alchimie hai inventato ;^) 
+(magari includero' degli script nel pacchetto sorgente).
+
+Buon divertimento!

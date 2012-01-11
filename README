@@ -1,0 +1,90 @@
+This is README, produced by makeinfo version 4.7 from README.texinfo.
+
+   tcpick is a textmode sniffer libpcap-based that can track tcp streams
+and saves the captured data in files or displays them in the terminal.
+Useful for picking files in a passive way.  It can store all
+connections data in different files, or it can display all the stream
+on the terminal, when the connection is closed.  There are useful
+display modes like hexdump, hexdump + ascii, only printable
+charachters, raw mode and so on. Available a color mode too, helpful to
+read better the output of the program.  Actually it can handle eth and
+ppp interfaces.  It is useful to keep track of what users of a network
+are doing, and is usable with textmode tools like grep, sed, awk.
+
+   For example, this command displays all HTTP GET requests:
+
+     # tcpick -i ppp0 -yP | grep GET
+
+   Please read the manpage for further details.
+
+home page
+*********
+
+http://tcpick.sourceforge.net
+
+other files to read:
+********************
+
+   * AUTHORS
+
+   * OPTIONS
+
+   * KNOWN-BUGS
+
+   * INSTALL
+
+   * TODO
+
+   * ChangeLog
+
+   * COPYING
+
+   * public_key.asc (key to check package signatures)
+
+   * public_key_message.txt
+
+contribute
+**********
+
+tcpick project needs somebody suggesting me bugs and new features!  If
+you want to contribute sending patches, finding bugs, compilation
+errors, platform-specific incompatibilies you are invited to the tcpick
+mailing-list:
+
+   * email address
+
+     tcpick-project@lists.sourceforge.net
+
+   * Archive
+     http://sourceforge.net/mailarchive/forum.php?forum=tcpick-project
+
+   * Subscribe
+     http://lists.sourceforge.net/lists/listinfo/tcpick-project
+
+   I'm sorry for my bad english
+
+   thanks
+
+   Francesco Stablum "duskdruid" <duskdruid @ despammed.com>
+
+Little disclaimer and license:
+******************************
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License as published by the
+Free Software Foundation; either version 2 of the License, or (at your
+option) any later version.
+
+   This program is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+General Public License for more details.
+
+   You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software Foundation,
+Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+   For other details on GNU/GPL license read COPYING file
+
+   Copyright (C) 2003, 2004  Francesco Stablum "duskdruid"
+

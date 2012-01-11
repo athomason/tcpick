@@ -1,0 +1,24 @@
+== Successfully compilation on the following platforms ==
+
+fields: OS - VERSION - ARCH - CC - BY
+
+tcpick version 0.1.24
+
+Slackware Linux 10.0	2.6.8.1		i386	gcc 3.3.4		duskdruid:despammed:com
+Suse Linux		2.4.21-207-smp	amd64	gcc 3.2.2		duskdruid:despammed:com
+FreeBSD			6.0-CURRENT	i386	gcc 3.4.2		lan:insys:it
+NetBSD			1.6.2		i386	gcc 2.95.3 20010315
+						(release)		kirash:phreaker:net
+OpenBSD			3.6		i386	gcc 2.95.3		kirash:phreaker:net
+OpenBSD			3.5		i386	gcc 2.95.3 20010125 	
+						(prerelease, propolice)	kirash:phreaker:net
+OpenBSD			3.4		i386	gcc 2.95.3		duskdruid:despammed:com
+
+MacOSX-2 Darwin		6.8		powerpc	gcc 3.3			duskdruid:despammed:com
+
+
+
+tcpick version =< 0.1.23
+
+Slackware Linux 9.1	2.6.2-7		i386	gcc 3.4.0		duskdruid:despammed:com
+

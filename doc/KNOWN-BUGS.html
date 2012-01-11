@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+<title>KNOWN-BUGS</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="KNOWN-BUGS">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">KNOWN-BUGS</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_TOC0" href="#TOC0">Patches</a>
+</li></ul>
+</div>
+
+
+
+<!-- capitolo primo -->
+<ul>
+<li>
+Kirash reported under BSD:
+
+     <p>read() called by pcap_read() called by pcap_loop() blocks the program
+until gets about 600.000 byte and then calls got_packet(). Then it
+blocks until other 600.000 bytes aren't captured. 
+It may be a problem of setitimer. If setitimer is set to 2 seconds,
+the program works fine, but this is only a workaround.
+
+     <p>This seem to be a kernel bug:
+
+     <p>Subject: kern/26470: all process stop for a long time by calling
+settimeofday() and setitimer()
+
+     <p>List: netbsd-bugs
+
+     <p>Date: 07/29/2004 04:32:58
+
+     <p>[cut]
+
+     <p>Description:
+
+     <p>All process stops for a long time by calling setitimer() with short
+interval and then putting the system clock forward long.
+
+     <p>This bug has been workarounded with a fork + sleep + kill trick.
+
+     <li>
+Segmentation fault in status_switch(): prev-&gt;next is null. 
+I cannot understand this, because the malloc *didn't return NULL*, but a
+valid address as gdb said me!. WTF! 
+NOTE: this is a very rare bug.
+
+     <li>
+Marcos Costantini reported a segmentation fault bug in tcpick running on a
+MacOSX system.
+
+     <li>Penelope Fudd wrote:
+
+     <p>Hi..
+
+     <p>I've got a tcpdump program running that logs all email to &amp; from the
+mail server.
+
+     <p>When I use 'tcpick -wR -r log-2004.xx.xx', and look at the resulting
+client and server files, there are binary strings stuck in the middle
+of
+the conversation:
+
+     <p>[cut]
+
+     <p>Where are these 'A0 00 00 00 00 00' chunks coming from?  I thought
+that -wR was binary-safe.  When I follow the stream using Ethereal, the
+problem goes away.
+
+     <li>
+maybe it doesn't go in promisc mode even without -p
+
+   </ul>
+
+<h2 class="unnumbered"><a name="TOC0"></a>Patches</h2>
+
+<p>We need somebody suggesting bugs and new features!
+
+   <p>If you want to give some help, please subscribe to the mailing-list:
+
+   <p>&lt;tcpick-project  lists.sourceforge.net&gt;
+
+   <p>Archive: http://sourceforge.net/mailarchive/forum.php?forum=tcpick-project
+
+   <p>Subscribe: http://lists.sourceforge.net/lists/listinfo/tcpick-project
+
+   <p>thanks
+
+</body></html>
+

@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+<title>README</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="README">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">README</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_TOC0" href="#TOC0">home page</a>
+<li><a name="toc_TOC1" href="#TOC1">other files to read:</a>
+<li><a name="toc_TOC2" href="#TOC2">contribute</a>
+<li><a name="toc_TOC3" href="#TOC3">Little disclaimer and license:</a>
+</li></ul>
+</div>
+
+
+
+<!-- capitolo primo -->
+<p>tcpick is a textmode sniffer libpcap-based that can track tcp streams
+and saves the captured data in files or displays them in the terminal. 
+Useful for picking files in a passive way. 
+It can store all connections data in different files, or it can display all
+the stream on the terminal, when the connection is closed. 
+There are useful display modes like hexdump, hexdump + ascii,
+only printable charachters, raw mode and so on. Available a color mode too,
+helpful to read better the output of the program. 
+Actually it can handle eth and ppp interfaces. 
+It is useful to keep track of what users of a network are doing, and is
+usable with textmode tools like grep, sed, awk.
+
+   <p>For example, this command displays all HTTP GET requests:
+
+<pre class="example">     # tcpick -i ppp0 -yP | grep GET
+</pre>
+   <p>Please read the manpage for further details.
+
+<h2 class="unnumbered"><a name="TOC0"></a>home page</h2>
+
+<p>http://tcpick.sourceforge.net
+
+<h2 class="unnumbered"><a name="TOC1"></a>other files to read:</h2>
+
+     <ul>
+<li>AUTHORS
+<li>OPTIONS
+<li>KNOWN-BUGS
+<li>INSTALL
+<li>TODO
+<li>ChangeLog
+<li>COPYING
+<li>public_key.asc (key to check package signatures)
+<li>public_key_message.txt
+</ul>
+
+<h2 class="unnumbered"><a name="TOC2"></a>contribute</h2>
+
+<p>tcpick project needs somebody suggesting me bugs and new features! 
+If you want to contribute sending patches, finding bugs, compilation errors,
+platform-specific incompatibilies you are invited to the tcpick
+mailing-list:
+
+     <ul>
+<li>email address
+
+     <p><b>tcpick-project@lists.sourceforge.net</b>
+<li>Archive
+http://sourceforge.net/mailarchive/forum.php?forum=tcpick-project
+<li>Subscribe
+http://lists.sourceforge.net/lists/listinfo/tcpick-project
+</ul>
+
+   <p>I'm sorry for my bad english
+
+   <p>thanks
+
+   <p>Francesco Stablum "duskdruid" <b>&lt;duskdruid @ despammed.com&gt;</b>
+
+<h2 class="unnumbered"><a name="TOC3"></a>Little disclaimer and license:</h2>
+
+<p>This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+   <p>This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+   <p>You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+   <p>For other details on GNU/GPL license read COPYING file
+
+   <p>Copyright (C) 2003, 2004  Francesco Stablum "duskdruid"
+
+</body></html>
+

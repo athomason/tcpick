@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>TODO</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="TODO">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">TODO</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_TOC0" href="#TOC0">for 0.2.2 version (Feb 2005)</a>
+<li><a name="toc_TOC1" href="#TOC1">for 0.2.3 version (Mar 2005)</a>
+<li><a name="toc_TOC2" href="#TOC2">for 0.3.0 version (2005)</a>
+<li><a name="toc_TOC3" href="#TOC3">for the far future</a>
+</li></ul>
+</div>
+
+
+
+<!-- capitolo primo -->
+<ul>
+<li>good homepage for tcpick (italian too)
+<li>fix bugs in KNOWN-BUGS and FIXMEs
+</ul>
+
+<h2 class="unnumbered"><a name="TOC0"></a>for 0.2.2 version (Feb 2005)</h2>
+
+     <ul>
+<li>more speed for port-&gt;service resolution method. 
+<li>flag to distinguish between client and server data in a
+tcp-bidirectional output file with an introductive banner. 
+<li>add acknowledged stream banner (i.e. &ldquo;data (offset:1234) sent from
+client: foobar&rdquo;)
+
+     <li>statistics:
+          <ul>
+<li>bytes/second, connections resetted, connections/hour
+<li>total connections
+<li>total bytes transferred by {clients|servers}
+<li>total packets received / lost
+</ul>
+
+     <li>(other?)
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC1"></a>for 0.2.3 version (Mar 2005)</h2>
+
+     <ul>
+<li>balanced/avl tree in the connection tracking engine
+<li>improve speed by using function pointers
+
+     <li>(other?)
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC2"></a>for 0.3.0 version (2005)</h2>
+
+     <ul>
+<li>A more coherent EXPIRED status detection
+<li>XML output
+<li>managing DLT_LOOP, DLT_IEEE802_11 and DLT_NULL fully tested
+<li>complete INTERNALS file (there is lot to write)
+<li>http/yahoo decoder by Saumil Shah (separate package?) 
+<li>increase tracking speed by adding a hash function or a `memcmp'
+(thanks to mainman's experience)
+<li>increase speed by adding multithreading
+<li>add a &ldquo;turbo&rdquo; mode (with the ./configure remove features)
+<li>print only some status (i.e. only ESTABLISHED)
+<li>custom filenaming pattern
+<li>writing the offsets and seqs to file and terminal
+colors
+<li>ability to enable/disable _detailed_ header printing
+<li>write name lookups to a file (useful?)
+
+     <li>use the other nice libpcap functions (fully)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC3"></a>for the far future</h2>
+
+     <ul>
+<li>autodetect and name ftp and http files (external program?) 
+<li>autodect and decrypt ssh/ssl connections (external program?) 
+<li>"spider" mode: make a path of all urls visited by some hosts
+  (external program?) 
+  (that will be a nice mode to see what kind of sites are hosts visiting)
+<li>ncurses/gtk front-end
+<li>RFC1149 compatibility and RFC3514 support
+</ul>
+
+</body></html>
+

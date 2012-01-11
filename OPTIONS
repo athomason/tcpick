@@ -1,0 +1,311 @@
+tcpick(8)							     tcpick(8)
+
+
+
+NAME
+       tcpick - tcp stream sniffer and connection tracker
+
+SYNOPSIS
+       tcpick [ -a ] [ -n ] [ -C ]
+	      [ -e count ]
+	      [ -i interface | -r  file ]
+	      [ -X timeout ]
+	      [ -D  ] [ -F1 | -F2 ]
+	      [ -yH | -yP | -yR | -yU | -yx | -yX ]
+	      [ -bH | -bP | -bR | -bU | -bx | -bX ]
+	      [ -wH[ub] | -wP[ub] | -wR[ub] | -wU[ub] ]
+	      [ -v  [ verbosity ]] [ -S ] [ -h ]
+	      [ --separator ]
+	      [ -T | -Tf  [ number ]]
+	      [ -E | -Ef  [ number ]]
+	      [ -Pc  |	-Ps ]
+	      [  "filter" ]
+	      [ --help ] [ --version ]
+
+
+DESCRIPTION
+       tcpick  is  a textmode sniffer libpcap-based that can track tcp streams
+       and saves the data captured in different files, each for every  connec-
+       tion,  or  displays them in the terminal in different formats (hexdump,
+       printable charachters, raw...)  Useful for picking files in  a  passive
+       way.   It is useful to keep track of what users of a network are doing,
+       and is usable with textmode tools like  grep,  sed,  awk.   Happy  data
+       hunting :-)
+
+
+BASE OPTIONS
+       -i --interface interface
+	      listen  on selected interface, (i.e. ppp0 or eth0). If option -i
+	      is omitted, tcpick is able to select the	first  open  interface
+	      (usually a ethernet card).
+
+       -r --readfile
+	      reads raw packets from a file written with tcpdump -w instead of
+	      using a network device.
+
+	"filter"
+	      This is the filter for the capturer engine. You can  set	it  in
+	      the  same  way of setting the tcpdump(1) filter. Read tcpdump(1)
+	      manpage for other explanations.
+
+       -a     Displays host names instead of ip addresses. Warning: for  every
+	      new  ip  grabbed a dns query will be generated! Use it carefully
+	      on high-traffic network devices!
+
+       -C --colors
+	      Uses terminal colors: very nice!	It should help you to read the
+	      output of tcpick
+
+       -D number --dirs number
+	      Create  directories to store sniffed sessions.  When a directory
+	      contains number sessions, a new one will be created.
+
+       -e count
+	      Exits when count packets have been sniffed
+
+       -E number
+	      Exit when number sniffed connections are detected as "CLOSED"
+
+       -Ef number
+	      Exit when the first number connections are detected as "CLOSED"
+
+       -F1 -F2 --filenaming 1|2
+	      Choose the filenaming system.
+	       -F1 : tcpick_clientip_serverip.side.dat
+	      (side means clnt, serv or both)
+	       -F2 : tcpick_connectionnumber_clientip_serverip.side.dat
+
+       -h     Shows source and destination ip and port;  shows	tcp  flags  as
+	      letters.
+
+       --help Displays a short help summary
+
+       -p     Don't  put  the network interface in promiscuous mode. Note that
+	      the interface might be in  promiscuous  mode   for   some  other
+	      reason.
+
+       -S     Suppresses the "status of the connection" banner.
+
+       --separator
+	      Add a separator for the payloads displayed.
+
+       -t     Adds timestamp in hour:minutes:seconds:microseconds format
+
+       -td    Like -t with date timestamp in day-month-year format
+
+
+       -T number
+	      Track  number  connections.  It  could be very useful on a high-
+	      traffic network device.  If number is not specified, it will  be
+	      set to 1.
+
+       -Tf number
+	      Track  only  the first number connections; the following will be
+	      discarded. If number is not specified, it will be set to 1.
+
+       -v verbosity
+	      Quite unuseful, yet. Set verbosity level. Actually there are not
+	      really  many extra messages to display, this means it is enabled
+	      by default (-v1).  Set verbosity level to 0  to  suppress  extra
+	      messages	(-v0) except error messages.  Set verbosity level to 5
+	      to display debug messages (-v5).	There are not other  verbosity
+	      levels.
+
+       -X timeout
+	      Connections  are considered EXPIRED when there is no traffic for
+	      at least timeout seconds. Default is 600.
+
+       --version
+	      Displays the tcpick version
+
+
+DISPLAY THE DATA IN THE TCP PACKETS
+       These options are prefixed by -y and are useful to display  in  various
+       ways the content of the packet sniffed (the data, called payload), once
+       it arrives at the listening interface. In that way the  tcp  duplicates
+       will  be  not discarded and the packets will not be reordered, but dis-
+       played "as is". If you want a fully acknowledged stream, see the -w and
+       -b set of options.
+
+       -yH    View  data  in  hexadecimal-spaced mode (for the hexdump see -yx
+	      and -yX options.
+
+       -yP    Shows  data  contained  in  the	tcp   packets.	 Non-printable
+	      charachters  are	transformed in dots: ".". Newline character is
+	      preserved.  This is the best way, in my  opinion	to  show  data
+	      like HTTP requests, IRC communication, SMTP stuff and so on.
+
+       -yR    Displays	all  kind of charachters, printable and non printable.
+	      If something binary is transmitted, the effect will probably  be
+	      like watching with "cat" at a gzipped file.
+
+       -yx    Shows  all data after the header in hexadecimal dump of 16 bytes
+	      per line.
+
+       -yX    Shows all data after the header in hexadecimal  and  ascii  dump
+	      with 16 bytes per line.
+
+       -yU    Shows all data after the header, but Unprintable charachters are
+	      displayed as hexadecimal values between a "<" and a ">"  symbol.
+
+
+REBUILD AND WRITE THE TCP STREAM TO FILE
+       The  prefix  for  these	options  is  -w.  The TCP stream that has been
+       sniffed with these options will be written to file named:
+       client_<ip_client>_<ip_server>_<port_server>.tcpick and
+       server_<ip_client>_<ip_server>_<port_server>.tcpick
+       With the u flag of the -w option (i.e. -wRu)  both  client  and	server
+       data will be written to a unique file named in that way:
+       <ip_client>_<ip_server>_<port_server>.tcpick
+       If  you use the additional flag b of the -w option (i.e. -wPub), in the
+       file will be written this banner:
+
+       [client|server] offset before:offset after (lenght  of  rebuilded  seg-
+       ment)
+
+       to distinguish between client and server data.
+       The  flow  is  rebuilded,  reordered and the duplicates are dropped. In
+       that way it is possible to sniff entire files transmitted via ftp with-
+       out  data corruption (you can see this with md5sum).  If no argument is
+       given to -w the data will be written like -wR You can decide  to  write
+       only client or server data by setting the flag
+	C  (output only client data) and S (output only server data) to the -w
+       set.
+
+
+       -wR    This is the preferred option: data will be written  without  any
+	      changes. Useful for sniffing binary or compressed files.
+	      (-wRC only the client, -wRS only the server)
+
+       -wP    Unprintable charachters are written like dots.
+	      (-wPC only the client, -wPS only the server)
+
+       -wU    Unprintable  charachters	are  displayed	as  hexadecimal values
+	      between a "<" and a ">" symbol.
+	      (-wPC only the client, -wPS only the server)
+
+       -wH    The flow is written in hexadecimal-spaced mode.
+	      (-wHC only the client, -wHS only the server)
+
+
+DISPLAY THE REBUILDED TCP STREAM
+       The prefix for these options is -b.  This set of options is very useful
+       if you want to redirect the sniffed flow to anoter program with a pipe,
+       and there should be no data corruption.	Of course the most  useful  is
+       -bR  to	show the data as they are (raw).  A very useful feature is the
+       flag C (output only client data) and S (output only server data). I.e.:
+       -bRC  will  display  only the data from the client in raw mode; in that
+       way you can put them in a file with a pipe redirection.
+
+       The sub-options are quite the same of the -y set, so you have:
+
+	-bH  hex-spaced
+	      (-bHC only the client, -bHS only the server)
+
+	-bP  unprintable displayed as dots
+	      (-bPC only the client, -bPS only the server)
+
+	-bR  raw mode
+	      (-bRC only the client, -bRS only the server)
+
+	-bU  unprintable as <hex>.
+	      (-bUC only the client, -bUS only the server)
+
+	-bx  hexdump
+	      (-bxC only the client, -bxS only the server)
+
+	-bU  hexdump + ascii
+	      (-bXC only the client, -bXS only the server)
+
+	-PC --pipe client
+	      This is an alias for -bRC -S -v0 -Tf1 -Ef1.   With  this	option
+	      you are able to track only the first connection (-T1) matched by
+	      tcpick and data are displayed as raw. Only data from the	client
+	      are  put	on  stdout.  All  messages and banners are suppressed,
+	      except error messages (-S -v0), so this  option  is  particulary
+	      useful  to  download  an entire fully rebuilded and acknowledged
+	      connection.
+
+	-PS --pipe server
+	      This is an alias for -bRS -S -v0 -Tf1 -Ef1.
+
+
+EXAMPLES
+       how to display the connection status:
+	       # tcpick -i eth0 -C
+
+
+       display the payload and packet headers:
+	       # tcpick -i eth0 -C -yP -h -a
+
+
+       display client data only of the first smtp connection:
+	       # tcpick -i eth0 -C -bCU -T1 "port 25"
+
+
+       download a file passively:
+	       # tcpick -i eth0 -wR "port ftp-data"
+
+
+       log http data in unique files (client and server mixed together):
+	       # tcpick -i eth0 "port 80" -wRub
+
+
+       redirect the first connection to a software:
+	       #  tcpick  -i  eth0  --pipe  client  "port   80"   |   gzip   >
+	      http_response.gz
+	       # tcpick -i eth0 --pipe server "port 25" | nc foobar.net 25
+
+
+MAILING-LIST
+       Address: <tcpick-project[a]lists.sourceforge.net>
+       Archive:     http://sourceforge.net/mailarchive/forum.php?forum=tcpick-
+       project
+       Subscribe: http://lists.sourceforge.net/lists/listinfo/tcpick-project
+       If you have new ideas, patches, feature requests or simply  need  help,
+       don't  wait!  I	will  be grateful if you send a message to the mailing
+       list (even if you want to say what you liked most on tcpick).
+
+
+TCPICK WEBSITE
+       The tcpick website is at http://tcpick.sf.net.
+       You	 can	   find       the	project       page	 here:
+       http://sourceforge.net/projects/tcpick kindly hosted by the sourceforge
+       team.
+
+
+AUTHORS
+       Please check AUTHORS file.
+
+
+BUGS
+       Tcpick is an experimental software, and maybe some bugs	are  described
+       in the KNOWN-BUGS file.
+       On  some  versions of MacOSX Segmentation Fault happens and connections
+       aren't tracked properly.
+       If you find any other bug, please write to the tcpick mailing list.
+
+
+SEE ALSO
+       Other nice packet/data sniffers:
+       tcpdump, ngrep, tcptrack, ettercap, ethereal, snort
+
+
+LICENSE
+       This program is free software; you can redistribute it and/or modify it
+       under  the  terms of the GNU General Public License as published by the
+       Free Software Foundation; either version 2 of the License, or  (at  you
+       option) any later version.
+
+       This  program  is  distributed  in the hope that it will be useful, but
+       WITHOUT ANY  WARRANTY;  without	even  the  implied  warranty  of  MER-
+       CHANTABILITY  or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General
+       Public License for more details.
+
+       You should have received a copy of the GNU General Public License along
+       with this program; if not, write to the Free Software Foundation, Inc.,
+       59 Temple Place - Suite 330, Boston, MA	02111, USA.
+
+
+
+								     tcpick(8)

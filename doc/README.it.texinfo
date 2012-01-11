@@ -1,0 +1,91 @@
+\input texinfo  @c -*-texinfo-*-
+@setfilename README.it
+@settitle LEGGIMI
+@c @setchapternewpage odd
+@c @paragraphindent asis
+
+
+
+@c 1st page:
+@titlepage
+@title LEGGIMI
+@subtitle subtitle
+@author Francesco 'duskdruid' Stablum
+
+@c copyright page
+@end titlepage
+@headings single
+
+
+@c Contenuti
+@contents
+
+@c capitolo primo
+
+tcpick e' uno sniffer con interfaccia testuale basato sulle
+celeberrime librerie libpcap.
+Tra le sue funzioni quelle piu' importanti sono la capacita' di
+tracciare flussi di dati trasferiti mediante il protocollo tcp e la
+possibilita' di salvare i dati catturati all'interno di files, oppure
+di visualizzarli direttamente nel terminale.
+Puo' essere utilizzato per il download passivo di file trasferiti via
+ftp (per l'http e' neccessaria una ulteriore decodifica a livello applicazione).
+Tra le modalita' di visualizzazione dei dati ci sono: esadecimale,
+esadecimale con ascii (ovvero il classico hexdump), visualizzazione
+dei soli caratteri stampabili, modalita' ``raw'' ecc.
+E' disponibile anche una modalita' a colori per rendere l'output piu'
+leggibile.
+Se viene posizionato su un gateway puo' essere utilizzato per
+osservare le attivita' degli utenti di una rete interna.
+Inoltre e' adatto ad essere utilizzato con strumenti testuali a riga
+di comando come grep, sed e awk. 
+
+Un semplice esempio per visualizzare le richieste http:
+
+@example
+# tcpick -i ppp0 -yP | grep GET
+@end example
+
+@unnumbered home page
+
+http://tcpick.sourceforge.net
+
+@unnumbered Altri file da leggere
+
+@itemize @bullet
+
+@item AUTHORS
+@item OPTIONS
+@item KNOWN-BUGS
+@item INSTALL
+@item EXAMPLES.it
+@item TODO
+@item ChangeLog
+@item COPYING
+@item public_key.asc (key to check package signatures)
+@item public_key_message.txt
+@end itemize
+@unnumbered contribuisci!
+
+tcpick e' un progetto open-source, e, in quanto tale, sono graditi
+qualsiasi tipo di richieste di funzionalita', report di bug, patch e
+quanto altro.
+Questa e' la mailing list, 
+che puoi utilizzare per segnalare qualsiasi problema:
+
+@itemize 
+@item indirizzo
+
+@b{tcpick-project@@lists.sourceforge.net}
+@item Archivio
+http://sourceforge.net/mailarchive/forum.php?forum=tcpick-project
+@item Pagina di iscrizione
+http://lists.sourceforge.net/lists/listinfo/tcpick-project
+@end itemize
+
+@unnumbered Note sulla licenza
+
+Tcpick e' rilasciato con la licenza GNU GPL. Per ulteriori
+informazioni leggere il file COPYING (in inglese)
+
+@bye

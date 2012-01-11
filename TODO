@@ -1,0 +1,86 @@
+This is TODO, produced by makeinfo version 4.7 from TODO.texinfo.
+
+   * good homepage for tcpick (italian too)
+
+   * fix bugs in KNOWN-BUGS and FIXMEs
+
+for 0.2.2 version (Feb 2005)
+****************************
+
+   * more speed for port->service resolution method.
+
+   * flag to distinguish between client and server data in a
+     tcp-bidirectional output file with an introductive banner.
+
+   * add acknowledged stream banner (i.e. "data (offset:1234) sent from
+     client: foobar")
+
+   * statistics:
+        * bytes/second, connections resetted, connections/hour
+
+        * total connections
+
+        * total bytes transferred by {clients|servers}
+
+        * total packets received / lost
+
+   * (other?)
+
+
+for 0.2.3 version (Mar 2005)
+****************************
+
+   * balanced/avl tree in the connection tracking engine
+
+   * improve speed by using function pointers
+
+   * (other?)
+
+
+for 0.3.0 version (2005)
+************************
+
+   * A more coherent EXPIRED status detection
+
+   * XML output
+
+   * managing DLT_LOOP, DLT_IEEE802_11 and DLT_NULL fully tested
+
+   * complete INTERNALS file (there is lot to write)
+
+   * http/yahoo decoder by Saumil Shah (separate package?)
+
+   * increase tracking speed by adding a hash function or a `memcmp'
+     (thanks to mainman's experience)
+
+   * increase speed by adding multithreading
+
+   * add a "turbo" mode (with the ./configure remove features)
+
+   * print only some status (i.e. only ESTABLISHED)
+
+   * custom filenaming pattern
+
+   * writing the offsets and seqs to file and terminal colors
+
+   * ability to enable/disable _detailed_ header printing
+
+   * write name lookups to a file (useful?)
+
+   * use the other nice libpcap functions (fully)
+
+for the far future
+******************
+
+   * autodetect and name ftp and http files (external program?)
+
+   * autodect and decrypt ssh/ssl connections (external program?)
+
+   * "spider" mode: make a path of all urls visited by some hosts
+     (external program?)    (that will be a nice mode to see what kind
+     of sites are hosts visiting)
+
+   * ncurses/gtk front-end
+
+   * RFC1149 compatibility and RFC3514 support
+

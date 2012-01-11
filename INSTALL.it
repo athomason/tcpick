@@ -1,0 +1,40 @@
+=================
+INSTALLARE TCPICK
+=================
+
+Installazione veloce
+====================
+(dovrebbe funzionare sul 99% dei sistemi *nix)
+
+Dopo essersi accertati che le librerie libpcap siano correttamente
+installate digitare:
+
+  $ ./configure
+  $ make
+  $ su -
+  # make install
+
+Nel caso le librerie libpcap non siano installate nel sistema, e'
+possibile scaricare l'ultima versione da questo url:
+http://www.tcpdump.org/ 
+
+IN CASO DI PROBLEMI NELLA CONFIGURAZIONE - SOLO PER ESPERTI:
+In qualche sistema unix ci potrebbero essere problemi nella
+configurazione con lo script ./configure
+Se ti senti impavido puoi modificare manualmente questi file:
+
+./Makefile.EDITME
+./src/Makefile.EDITME
+./src/config.h.EDITME
+
+e poi rinominarli in:
+
+./Makefile
+./src/Makefile
+./src/config.h
+
+A questo punto ti offrirei una birra (virtuale) se mi notifichi il
+problema che hai riscontrato (e su quale sistema operativo) e io
+cerchero' di fixare tutti i bachi del ./configure.
+
+Per ulteriori informazioni leggere il file INSTALL (in inglese)

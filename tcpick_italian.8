@@ -1,0 +1,384 @@
+.TH "tcpick" 8
+.SH NAME
+tcpick \- sniffer tracciatore di connessioni
+.SH SYNOPSIS
+.B tcpick 
+[\fB -a \fP] [\fB -n \fP] [\fB -C \fP]
+.br
+.ti +7
+[\fB -e \fP\fInum\fP ]
+.br
+.ti +7
+[\fB -i \fP\fIinterfaccia \fP|\fB -r \fP\fI file \fP]
+.br
+.ti +7
+[\fB -X \fP\fItimeout\fP ]
+.br
+.ti +7
+[\fB -D \fP ] [\fB -F1 \fP|\fB -F2 \fP]
+.br
+.ti +7
+[\fB -yH \fP|\fB -yP \fP|\fB -yR \fP|\fB -yU \fP|\fB -yx \fP|\fB -yX \fP]
+.br
+.ti +7
+[\fB -bH \fP|\fB -bP \fP|\fB -bR \fP|\fB -bU \fP|\fB -bx \fP|\fB -bX \fP]
+.br
+.ti +7
+[\fB -wH[ub] \fP|\fB -wP[ub] \fP|\fB -wR[ub] \fP|\fB -wU[ub] \fP] 
+.br
+.ti +7 
+[\fB -v \fP [\fI verbosity \fP]] [\fB -S \fP] [\fB -h \fP]
+.br 
+.ti +7
+[\fB --separator \fP] 
+.br
+.ti +7
+[\fB -T \fP|\fB -Tf \fP [\fI n \fP]]
+.br
+.ti +7
+[\fB -E \fP|\fB -Ef \fP [\fI n \fP]]
+.br
+.ti +7
+[\fB -Pc \fP | \fB -Ps \fP]
+.br
+.ti +7
+[\fI  "filter" \fP]
+.br
+.ti +7 
+[\fB --help \fP] [\fB --version \fP]
+
+.SH DESCRIZIONE
+\fBtcpick\fP e' uno sniffer con interfaccia testuale basato sulle
+celeberrime librerie libpcap.  Tra le sue funzioni quelle piu'
+importanti sono la capacita' di tracciare flussi di dati trasferiti
+mediante il protocollo tcp e la possibilita' di salvare i dati
+catturati all'interno di files, oppure di visualizzarli direttamente
+nel terminale.  Puo' essere utilizzato per il download passivo di file
+trasferiti via ftp (per l'http e' neccessaria una ulteriore decodifica
+a livello applicazione).  Tra le modalita' di visualizzazione dei dati
+ci sono: esadecimale, esadecimale con ascii (ovvero il classico
+hexdump), visualizzazione dei soli caratteri stampabili, modalita' "raw"
+ecc.  E' disponibile anche una modalita' a colori per rendere
+l'output piu' leggibile.  Se viene posizionato su un gateway puo'
+essere utilizzato per osservare le attivita' degli utenti di una rete
+interna.  Inoltre e' adatto ad essere utilizzato con strumenti testuali
+a riga di comando come grep, sed e awk.
+
+.SH OPZIONI BASE
+.TP
+.B \-i --interface \fIinterfaccia di rete\fP
+ascolta l'interfaccia selezionata, (p.es. \fIppp0\fP o \fIeth0\fP). 
+Se non e' stata impostata l'opzione \fB-i\fP, tcpick selezionera'
+di default il primo dispositivo disponibile.
+.TP
+.B \-r --readfile
+legge i pacchetti da un file generato mediante 
+.B tcpdump -w
+invece di utilizzare un interfaccia di rete ordinaria.
+.TP
+\fB "filtro" \fP
+E' possibile impostare un filtro come quelli che si possono impostare
+con \fB tcpdump(1)\fP
+Un esauriente lettura della manpage di tcpdump(1) rendera' chiara la
+logica di questa opzione.
+.TP
+.B \-a
+Risolve i nomi degli host invece di mostrare indirizzi ip.
+\fBAttenzione\fP: per ogni nuovo indirizzo ip sniffato verra' generata
+una richiesta dns! Usare con cautela su dispositivi di rete ad alto traffico. 
+.TP
+.B \-C --colors
+Usa colori e rende il terminale piu' allegro per aiutarti a leggere l'output.
+.TP
+.B \-D \fIn\fP \fB--dirs\fP \fIn\fP
+Crea directory per salvare le connessioni sniffate.
+Quando una directory arriva a contenere \fIn\fP sessioni, 
+una nuova directory viene creata.
+.TP
+.B \-e \fInum\fP
+Esce quando \fInum\fP pacchetti sono stati catturati.
+.TP
+.B \-E \fIn\fP
+Esce quando \fIn\fP connessioni sono state tracciate (ovvero il loro
+stato e' "CLOSED")
+.TP
+.B \-Ef \fIn\fP
+Esce quando \fBle prime\fP \fIn\fP connessioni sono identificate come "CLOSED"
+.TP
+.B \-F1 \-F2 \--filenaming 1|2
+sceglie la tipologia di nome per i file delle sessioni sniffate
+.br
+\fB \-F1 \fP: tcpick_\fBclientip\fP_\fBserverip\fP.\fBside\fP.dat
+.br
+(\fBside\fP puo' essere \fBclnt\fP, \fBserv\fP o \fBboth\fP)
+.br
+\fB \-F2 \fP: tcpick_\fBconnectionnumber\fP_\fBclientip\fP_\fBserverip\fP.\fBside\fP.dat
+.TP
+.B \-h
+Mostra ip e porta sorgente e destinazione. Mostra i flag TCP come lettere.
+.TP
+.B \--help
+Mostra un breve messaggio d'aiuto con il riassunto delle opzioni disponibili.
+.TP
+.B \-p
+\fINon imposta\fP l'interfaccia di rete in modalita' promisqua. 
+Attenzione pero': l'interfaccia potrebbe essere in modalita' promisqua
+per qualche altra ragione.
+.TP
+.B \-S
+Sopprime la visualizzasione dello stato della connessione.
+.TP
+.B \--separator
+Aggiunge un separatore ai pacchetti.
+.TP
+.B \-t
+Visualizza il tempo (timestamp) in questo formato:
+\fBore:minuti:secondi:microsecondi\fP
+.TP
+.B \-td
+Esattamente come \fB-t\FP con l'aggiunta della data nel formato \fBgiorno-mese-anno\fP
+
+.TP
+.B \-T \fIn\fI
+Traccia solo \fIn\fP connessioni. Molto utile per reti ad elevato
+traffico.
+Se \fIn\fP non e' stato specificato, viene impostato a \fB1\fP.
+.TP
+.B \-Tf \fIn\fP
+Traccia \fBsolo le prime\fP \fIn\fP connessioni; le successive saranno
+ignorate. Se \fIn\fP non e' stato specificato, viene impostato a \fB1\fP. 
+.TP
+.B \-v \fIverbosity\fP
+Opzione che probabilmente verra' rimossa. Imposta il livello 
+di "verbosita'" 
+Attualmente non ci sono molti messaggi extra da visualizzare. 
+\fB-v1\fP e' impostato di default. 
+Impostare la verbosita' a \fB0\fP (\fB-v0\fP) per sopprimere ogni messaggio ad
+eccezione degli errori. 
+Non ci sono altri livelli di "verbosita'".
+.TP
+.B \-X \fItimeout\fI
+Le connessioni vengono considerate \fBEXPIRED\fP (scadute) 
+quando non vengono scambiati pacchetti per almeno \fItimeout\fP
+secondi. Di default sono 600 secondi.
+.TP
+.B \--version
+Mostra la versione di tcpick
+
+.SH VISUALIZZARE I DATI CONTENUTI NEI PACCHETTI
+Queste opzioni hanno come prefisso \fB-y\fP 
+e sono utili per mostrare in svariati formati il contenuto dei
+pacchetti (payload), ovvero i dati che vengono trasferiti a livello
+applicazione non appena arrivano all'interfaccia di rete selezionata. 
+Questa opzione non sopprime i pacchetti tcp duplicati e non c'e'
+neanche il riordino degli stessi, ma vengono mostrati "cosi' come
+sono". 
+Per ottenere un flusso ricostruito e completamente riconosciuto
+(esattamente come fa lo stack di rete di un S.O.)
+leggi la descrizione del set di opzioni \fB-w\fP e \fB-b\fP.
+.TP
+.B \-yH
+Visualizza i dati come cifre esadecimali spaziate
+(per un hexdump vero e proprio si veda \fB-yx\fP e \fB-yX\fP).
+.TP
+.B \-yP
+Visualizza i dati contenuti nel pacchetto. Caratteri non stampabili
+vengono visualizzati come punti: "\fB.\fP". 
+Il carattere di nuova riga e le tabulazioni non vengono convertite in punti.
+Questo e' probabilmente il modo migliore per vedere con semplicita'
+richieste HTTP, comunicazioni IRC, sessioni SMTP eccetera.
+.TP
+.B \-yR
+Modalita' "raw". Visualizza tutti i caratteri, stampabili e non. Se
+qualcosa di binario (o compresso) viene trasferito, l'effetto sara'
+probabilmente come visualizzare con "\fBcat\fP" un file zippato.
+.TP
+.B \-yx
+Visualizza i dati in un dump esadecimale con 16 bytes per ogni riga.
+.TP
+.B \-yX
+Visualizza i dati come \fB-yx\fP con l'aggiunta della corrispettiva
+stringa ascii nella stessa riga.
+.TP
+.B \-yU
+Visualizza i dati come \fB-yP\fP, ma i caratteri non stampabili
+vengono visualizzati come valori esadecimali racchiusi tra parentesi
+angolari.
+
+.SH RICOSTRUIRE IL FLUSSO E SALVARLO SU FILE
+
+Il prefisso di queste opzioni e' \fB-w\fP.
+Attivando questa opzione le sessioni sniffate vengono salvate su file
+nella directory corrente.
+
+Il flusso viene ricostruito, riordinato e i pacchetti duplicati
+vengono tralasciati. In questo modo e' possibile sniffare interi file
+trasmessi via ftp (per fare un esempio) senza corruzione dei dati
+(si puo' verificare con md5sum).
+
+Con il flag \fBu\fP dell'opzione \fB-w\fP (p.es. \fB-wRu\fP)
+i dati di entrambi client e server verranno salvati su un unico
+file. Altrimenti i file saranno due e i flussi ben separati.
+
+Usando il flag addizionale \fBb\fP all'opzione \fB-wu\fP 
+(p.es. \fB-wPub\fP), nel file sara' scritto questo banner
+
+.br
+\fB[client|server] offset prima:offset dopo (lunghezza del segmento ricostruito)\fP
+.br
+
+per distinguere tra dati del client e del server nello stesso file
+
+.br
+Se non viene attribuito nessun flag all'opzione \fB-w\fP 
+i dati saranno scritti come con \fB-wR\fP.
+
+E' possibile decidere di salvare i dati dei soli client o dei soli server
+impostando il flag 
+\fBC\fP (solo dati del client) oppure \fBS\fP (solo dati del server)
+all'opzione \fB-w\fP. 
+
+.TP
+.B \-wR
+Questa e' l'opzione preferita: i dati vengono scritti senza alcun
+cambiamento. Utilissima per sniffare dati binari, compressi o criptati.
+.br
+(\fB-wRC\fP solo il client, \fB-wRS\fP solo il server)
+.TP
+.B \-wP
+Caratteri stampabili vengono scritti come punti.
+.br
+(\fB-wPC\fP solo il client, \fB-wPS\fP solo il server)
+.TP
+.B \-wU
+Caratteri non stampabili vengono scritti come esadecimali tra
+parentesi angolari.
+.br
+(\fB-wPC\fP solo il client, \fB-wPS\fP solo il server)
+.TP
+.B \-wH
+Il flusso e' scritto sotto forma di esadecimali spaziati
+.br
+(\fB-wHC\fP solo il client, \fB-wHS\fP solo il server)
+
+.SH VISUALIZZARE IL FLUSSO RICOSTRUITO
+Il prefisso per queste opzioni e' \fB-b\fP.
+Questo set di opzioni e' molto utile nell'intento di redirigere il
+flusso sniffato verso un'altro programma tramite il pipe, e non ci
+dovrebbe essere corruzione dei dati.
+Naturalmente il piu' utile e' \fB-bR\fP per utilizzare i dati cosi'
+come sono (raw).
+Una funzionalita' molto utile e' \fBC\fP (visualizza solo il client)
+e \fBS\fP (visualizza solo il server). p.es.: \fB-bRC\fP mostrera' in
+formato "raw" solo i dati dal client.
+
+I flag del set di opzioni \fB-b\fP sono molto simili a \fB-y\fP:
+.TP 
+\fB -bH \fP esadecimale spaziato 
+(\fB-bHC\fP solo il client, \fB-bHS\fP solo il server)
+.TP 
+\fB -bP \fP caratteri non stampabili visualizzati come punti
+(\fB-bPC\fP solo il client, \fB-bPS\fP solo il server)
+.TP
+\fB -bR \fP modalita' raw
+(\fB-bRC\fP solo il client, \fB-bRS\fP solo il server)
+.TP
+\fB -bU \fP caratteri non stampabili come esadecimali tra parentesi
+angolari.
+(\fB-bUC\fP solo il client, \fB-bUS\fP solo il server)
+.TP
+\fB -bx \fP hexdump
+(\fB-bxC\fP solo il client, \fB-bxS\fP solo il server)
+.TP
+\fB -bU \fP hexdump + ascii
+(\fB-bXC\fP solo il client, \fB-bXS\fP solo il server)
+.TP
+\fB -PC --pipe client \fP
+E' un alias di \fB-bRC -S -v0 -Tf1 -Ef1\fP.
+Con questa opzione puoi tracciare la prima connessione (\fB-T1\fP)
+e i dati vengono visualizzato come "raw". Solo i dati che provengono
+dal client vengono scritti sullo stdout. 
+Tutti i messaggi vengono soppressi, ad eccezione degli errori (\fB-S -v0\fP).
+L'intenzione di questa opzione alias e' di riassumere l'intento di
+scaricare per intero un flusso di dati di una sessione tcp.
+.TP
+\fB -PS --pipe server \fP
+E' un alias di \fB-bRS -S -v0 -Tf1 -Ef1\fP.
+
+.SH EXAMPLES
+
+.TP
+Visualizzare gli stati delle connessioni
+\fB # tcpick -i eth0 -C\fP
+
+.TP
+Visualizzare il contenuto del pacchetto e una stringa riassuntiva dell'header:
+\fB # tcpick -i eth0 -C -yP -h -a\fP
+
+.TP
+Visualizzare le email inviate da un utente
+\fB # tcpick -i eth0 -C -bCU -T1 "port 25"\fP
+
+.TP
+scaricare file in maniera passiva
+\fB # tcpick -i eth0 -wR "port ftp-data"\fP
+
+.TP
+loggare i dati http in file unici (client e server sono mescolati):
+\fB # tcpick -i eth0 "port 80" -wRub\fP
+
+.TP
+redirigere la prima connessione verso un software
+\fB # tcpick -i eth0 --pipe client "port 80" | gzip > http_response.gz\fP
+.br
+\fB # tcpick -i eth0 --pipe server "port 25" | nc foobar.net 25\fP
+
+.SH MAILING-LIST
+Indirizzo:
+\fI<tcpick-project[a]lists.sourceforge.net>\fP
+.br
+Archivio:
+\fIhttp://sourceforge.net/mailarchive/forum.php?forum=tcpick-project\fP
+.br
+Iscrizione:
+\fIhttp://lists.sourceforge.net/lists/listinfo/tcpick-project\fP
+.br
+Se hai qualche nuova idea, patch, richiesta di funzionalita' o
+semplicemente necesiti di aiuto, scrivi in mailing-list!
+
+.SH TCPICK SUL WEB
+La home-page di tcpick e': \fIhttp://tcpick.sf.net\fP.
+.br
+La pagina di progetto invece e' qui':
+\fIhttp://sourceforge.net/projects/tcpick\fP kindly hosted by the
+sourceforge team.
+
+.SH AUTORI
+Controlla il file \fBAUTHORS\fP.
+
+.SH BACHI
+
+Bachi? Ci sono bachi? Beh, tcpick non e' certo un software perfetto, e
+se hai qualche problema controlla il file \fBKNOWN-BUGS\fP.
+.br
+Sembra che su alcune versioni di MacOSX capiti un Segmentation Fault e
+ci siano problemi nel tracciamento delle connessioni.
+.br
+Se trovi bachi, scrivi alla mailing-list. 
+
+.SH VEDERE ANCHE
+Altri simpatici sniffer:
+.br
+tcpdump, ngrep, tcptrack, ettercap, ethereal, snort
+
+.SH LICENZA
+
+Tcpick e' rilasciato con la licenza GNU GPL. Per ulteriori informazioni
+leggere il file COPYING (in inglese).
+
+.SH Principio di Shaw:
+.br
+Fai un programma che anche un idiota puo' usare,
+.br
+e soltanto un idiota vorra' usarlo.
+.br

@@ -1,0 +1,552 @@
+<html lang="en">
+<head>
+<title>ChangeLog</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="ChangeLog">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">ChangeLog</h1>
+   <div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_TOC0" href="#TOC0">18 Jan 2005 0.2.1</a>
+<li><a name="toc_TOC1" href="#TOC1">18 Jan 2005 0.2.1-rc1</a>
+<li><a name="toc_TOC2" href="#TOC2">9 Jan 2005 0.2.0-final</a>
+<li><a name="toc_TOC3" href="#TOC3">30 Dec 2004 0.2.0-rc6</a>
+<li><a name="toc_TOC4" href="#TOC4">25 Dec 2004 0.2.0-rc5</a>
+<li><a name="toc_TOC5" href="#TOC5">14 Dec 2004 0.2.0-rc4</a>
+<li><a name="toc_TOC6" href="#TOC6">12 Dec 2004 0.2.0-rc3</a>
+<li><a name="toc_TOC7" href="#TOC7">30 Nov 2004 0.2.0-rc2</a>
+<li><a name="toc_TOC8" href="#TOC8">22 Nov 2004 0.2.0-rc1</a>
+<li><a name="toc_TOC9" href="#TOC9">08/09/04 0.2.0-devel2</a>
+<li><a name="toc_TOC10" href="#TOC10">07/09/04 0.2.0-devel1</a>
+<li><a name="toc_TOC11" href="#TOC11">28/08/04 0.1.24</a>
+<li><a name="toc_TOC12" href="#TOC12">03/06/04 0.1.23</a>
+<li><a name="toc_TOC13" href="#TOC13">07/03/04 0.1.22-test2</a>
+<li><a name="toc_TOC14" href="#TOC14">06/02/04 0.1.22-test1</a>
+<li><a name="toc_TOC15" href="#TOC15">28/02/04 0.1.21</a>
+<li><a name="toc_TOC16" href="#TOC16">30/01/04 0.1.20</a>
+<li><a name="toc_TOC17" href="#TOC17">15/01/04 0.1.19</a>
+<li><a name="toc_TOC18" href="#TOC18">11/01/04 0.1.18</a>
+<li><a name="toc_TOC19" href="#TOC19">11/01/04 0.1.18-test3 (UNSTABLE - BUGGY - ONLY FOR DEVELOPERS)</a>
+<li><a name="toc_TOC20" href="#TOC20">08/01/04 0.1.18-test2 (UNSTABLE - BUGGY - ONLY FOR</a>
+<li><a name="toc_TOC21" href="#TOC21">08/01/04 0.1.18-test1 (UNSTABLE - BUGGY - ONLY FOR</a>
+<li><a name="toc_TOC22" href="#TOC22">05/01/04 0.1.17</a>
+<li><a name="toc_TOC23" href="#TOC23">05/01/04 0.1.16b</a>
+<li><a name="toc_TOC24" href="#TOC24">05/01/04 0.1.16</a>
+<li><a name="toc_TOC25" href="#TOC25">04/01/04 0.1.15b</a>
+<li><a name="toc_TOC26" href="#TOC26">04/01/04 0.1.15 (early morning)</a>
+<li><a name="toc_TOC27" href="#TOC27">03/01/04 0.1.14</a>
+<li><a name="toc_TOC28" href="#TOC28">09/12/03 0.1.13</a>
+<li><a name="toc_TOC29" href="#TOC29">07/12/03 0.1.12</a>
+<li><a name="toc_TOC30" href="#TOC30">05/12/03 0.1.11-unstable</a>
+<li><a name="toc_TOC31" href="#TOC31">04/12/03 0.1.10</a>
+<li><a name="toc_TOC32" href="#TOC32">03/12/03 0.1.9</a>
+<li><a name="toc_TOC33" href="#TOC33">01/12/03 0.1.8</a>
+<li><a name="toc_TOC34" href="#TOC34">30/11/03 0.1.7</a>
+<li><a name="toc_TOC35" href="#TOC35">29/11/03 0.1.6</a>
+<li><a name="toc_TOC36" href="#TOC36">28/11/03 0.1.5</a>
+<li><a name="toc_TOC37" href="#TOC37">27/11/03 0.1.4</a>
+<li><a name="toc_TOC38" href="#TOC38">24/11/03 0.1.1</a>
+</li></ul>
+</div>
+
+
+
+<!-- capitolo primo -->
+<!-- chapter ChangeLog -->
+<h2 class="unnumbered"><a name="TOC0"></a>18 Jan 2005 0.2.1</h2>
+
+<p>unchanged from 0.2.1-rc1
+
+<h2 class="unnumbered"><a name="TOC1"></a>18 Jan 2005 0.2.1-rc1</h2>
+
+     <ul>
+Michael Coulter (mjc:bitz.ca):
+<li>Fixed headers include order for OpenBSD
+
+     <p>Gianluigi Spagnuolo (kirash:phreaker.net):
+<li>Added sigaction function to handle signals in a proper way.
+
+     <p>Francesco Stablum (duskdruid:despammed.com):
+<li>Fixed -lpcap -lpcap etc. arguments to cc
+
+     <li>Fixed SIGALRM freeze bug
+
+     <li>Added setitimer workaround for *BSD systems (fork + sleep + kill)
+
+     <li>Added -e option to exit when a certain number of packets is reached
+
+     <li>Added atexit function
+</ul>
+
+<h2 class="unnumbered"><a name="TOC2"></a>9 Jan 2005 0.2.0-final</h2>
+
+     <ul>
+Francesco Stablum (duskdruid:despammed.com):
+
+     <li>Few bugfixes with -t and -td options
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC3"></a>30 Dec 2004 0.2.0-rc6</h2>
+
+     <ul>
+Francesco Stablum (duskdruid:despammed.com):
+
+     <li>expired functions are now checked every second, not every packet. 
+(use setitimer and the SIGALRM signal).
+
+     <li>added DLT_PPP, DLT_SLIP, DLT_SLIP_BSDOS and DLT_PPP_BSDOS support. 
+credits: SNiFf v0.3 by uLiX
+http://www.s0ftpj.org/bfi/online/bfi10/BFi10-05.html
+
+     <li>added italian documentation (README.it, EXAMPLES.it, INSTALL.it, tcpick_italian.8)
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC4"></a>25 Dec 2004 0.2.0-rc5</h2>
+
+     <ul>
+Gianluigi Spagnuolo (kirash:phreaker.net):
+
+     <li>Added signal support + statistics (packets sniffed and
+connection tracked) in a similar way to tcpdump.
+
+     <li>Reorganized tcpick.c
+
+     <p>Francesco Stablum (duskdruid:despammed.com):
+
+     <li>Added autogen.sh script
+
+     <li>Fixed bug of `-D' option
+
+     <li>Updated to automake/aclocal 1.9.3
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC5"></a>14 Dec 2004 0.2.0-rc4</h2>
+
+     <ul>
+Gianluigi Spagnuolo (kirash:phreaker.net):
+
+     <li>found bug in avail_filename (write.c): too few arguments
+to printf: fixed.
+
+     <p>Francesco Stablum (duskdruid:despammed.com):
+
+     <li>Now '\r' and '\t' charachters are printable in 'P' and 'U' modes.
+
+     <li>MacOSX &ldquo;BIOCSRTIMEOUT: Invalid argument&rdquo; bug should be fixed.
+
+     <li>port aligment in status displayer fixed (simplified)
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC6"></a>12 Dec 2004 0.2.0-rc3</h2>
+
+     <ul>
+Francesco Stablum (duskdruid:despammed.com):
+
+     <li>added date-timestamp
+
+     <li>removed all typedefs. Now structures and unions should be better
+recognizable (now names of types are UPPER-CASE)
+
+     <li>Added .EDITME files for those people that have troubles with
+the ./configure script
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC7"></a>30 Nov 2004 0.2.0-rc2</h2>
+
+     <ul>
+Francesco Stablum (duskdruid:despammed.com):
+
+     <li>Timeout value is now set by `-X' option, because `-t' will be used
+for timestamps in the future. 
+<li>Filenaming system is now chosen with the `-F' option.
+
+     <p>Artyom Khafizov:
+
+     <li>`-D num' option will cause tcpick to create subdirectories,
+each for a desired number of sessions.
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC8"></a>22 Nov 2004 0.2.0-rc1</h2>
+
+     <ul>
+Artyom Khafizov:
+
+     <li>Added EXPIRED status for connection tracked with a -t option to choose
+      an appropriate timeout (default is 600)
+
+     <li>Fixed many memory leaks
+
+     <li>Added a new way to write the stream to files, using directories
+
+     <li>Added an experimental file naming system
+
+     <p>Buck Huppmann (buckh:pobox.com) and Artyom Khafizov
+( both have had the same good idea :^D ):
+
+     <li>Added RESET status for connections tracked. (RST-flagged packets will
+delete the connection).
+
+     <p>Federico Castaneda (F_CASTANEDA:crm.com.ar):
+
+     <li>Added UDP support
+
+     <p>Francesco Stablum (duskdruid:despammed.com):
+
+     <li>Debug messages are now available only with the -DTCPICK_DEBUG argument
+given to the compiler.
+
+     <li>Changed signing key! Please read public_key_message.txt and check
+the revocation certificate public_key_OLD.revoke
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC9"></a>08/09/04 0.2.0-devel2</h2>
+
+     <ul>
+<li>Segmentation fault bug fixed (with `u' tcpick tried to free 2 times
+the same heap address and closed 2 times the same file). 
+(Saumil Shah discovered it)
+<li>Bugfix: `u' flag of `-w' worked as with `b' flag either if `b' wasn't choosen. 
+</ul>
+
+<h2 class="unnumbered"><a name="TOC10"></a>07/09/04 0.2.0-devel1</h2>
+
+     <ul>
+<li>Robert Scheck fixed tcpick manual section in a `printf'
+<li>Saumil Shah feature request done:
+
+     <p>the flag 'u' to the '-w' option enables tcpick to write sniffed data
+in a unique file, with client and server data mixed together.
+
+     <p>the flag 'b' to the '-w' option enables tcpick to write a banner to
+the unique file that introduces server and client data.
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC11"></a>28/08/04 0.1.24</h2>
+
+     <ul>
+<li>BSD support _should_ be completed
+<li>added &ldquo;suicide&rdquo; and &ldquo;fault&rdquo; functions
+<li>some code cleanup
+<li>fixed netinet/ip.h check bug in the configure script for FreeBSD machines
+<li>fixed hexdump bug
+<li>fixed reset color. Background color is now not black, but the
+terminal default
+<li>added the balanced tree to the lookup engine
+<li>applied patch by GLS to improve compatibility with openbsd 3.5 with
+gcc 2.95.3
+<li>Now closed connections are freed and delinked; files will be closed. 
+<li>Added the -E and -Ef arguments
+<li>Added the -Tf option
+<li>Fixed the segmentation bug of the `-y' option
+<li>added INTERNALS file (should be completed)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC12"></a>03/06/04 0.1.23</h2>
+
+     <ul>
+<li>PFLOG support added by kirash aka GLS
+<li>patch by Sebastian Prause:
+&ldquo;I've created a little patch to make tcpick work with pppoe interfaces
+on NetBSD (which use DLT_PPP_ETHER) and wanted to share it, so here it
+is...&rdquo;
+<li>now the options for displaying the payload should be prefixed by -y
+I have added another set of displaying option, that are prefixed
+with -b. The -b options are useful to view data only when acknowledged
+(exactly like data written to files) and with this is particulary
+useful the raw mode (-bR) that you can use if you want to redirect
+data with a pipe to another software. 
+<li>The newline carachter is suppressed when displaying the payload of the
+packet or an acknowledged stream in the case there are no banners
+except the case of the hexdump's. 
+<li>Added the &ldquo;&ndash;pipe&rdquo; option, by a wish of loopback. See manpage for
+details. 
+<li>Now you are able to choose to write to file only data of clients or
+servers or both, with the additional flags `C' and `S' to the option
+`-w' (omitted means &ldquo;both&rdquo;). 
+<li>Many, many changes, code cleanups and improvement made by whyx in
+fragments.c and lookup.c
+<li>With the new option `-T&lt;number&gt;', it is now possible to
+track only the first &lt;number&gt; connections, the following will be
+discarded by the tracker engine. This is useful for the `-w' and `-b'
+options; for `-y' and `-h' it has no effect, because they aren't part
+of the tracker. 
+<li>In the hexdump+ascii red dots rapresents now the unprintable carachter. 
+<li>the lenght of the payload is now displayed in the packet banner
+<li>rewritten the core of verify.c and fragments.c
+<li>now connections with equal ip addresses and ports are stored in
+different files
+<li>files dumped with tcpick -w* options are now saved vith &ldquo;.tcpick&rdquo;
+extension
+<li>bugfix on datalink.c by kirash aka GLS
+<li>deleted alloc.c and match.c
+<li>used the &ldquo;linux&rdquo; 8-spaces indentation
+<li>added packet separator (by a Simone Gianni's wish)
+<li>added the `-p' flag to avoid to put the network interface in
+promiscuous mode (I'm not sure it works) (by a Simone Gianni's wish)
+<li>Rewritten manpage. Read it! There are lots of changes in the options! 
+<li>I have tested tcpick to sniff a file via ftp, and the md5sums were
+equal. The tar.gz archive I have downloaded was more than 2MB
+long. Other tests are confirming me that the newly-written code works
+in the right way.
+
+</ul>
+
+<h2 class="unnumbered"><a name="TOC13"></a>07/03/04 0.1.22-test2</h2>
+
+     <ul>
+<li>now output files are opened in &ldquo;a&rdquo; (only append) mode
+<li>now data are written with &ldquo;fwrite()&rdquo; + ferror (thanks ^^Gimli^^)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC14"></a>06/02/04 0.1.22-test1</h2>
+
+     <ul>
+<li>corrected bug in datalinktoa() by sbi! 
+<li>Davide Benini: corrected bug in calling S_calloc with only one argument
+<li>added S_malloc function
+<li>now data are written with the write() function
+</ul>
+
+<h2 class="unnumbered"><a name="TOC15"></a>28/02/04 0.1.21</h2>
+
+     <ul>
+<li>Added src/ directory for the sources
+<li>Added a `flags` struct
+<li>Patch by Penelope Fudd: added `-r' option to read tcpdump filedumps: this is a very nice feature :)
+<li>Improved debugging system with dprintf (thank you ShackaN!) 
+<li>Changed name of the `stack' memory block into `tracker'
+<li>Increased speed of the connection tracking system by adding many
+return's instruction (instead of using some damned variables
+like `loop_finished' and `result_bool') in verify() and match(). 
+<li>Added a "chained" tracker: now it is possible to track an
+infinite number of connections (thank you mainman!) 
+<li>Fixed bug that server file and client file were switched
+</ul>
+
+<h2 class="unnumbered"><a name="TOC16"></a>30/01/04 0.1.20</h2>
+
+     <ul>
+<li>added displaying of unprintable carachters (that are also dots in -P option)
+with red color. 
+<li>added hexdump mode colorizer
+<li>with option -C2 it is now possible see different colors depending on
+the connection tracked (only status banners) (file colortrack.c)
+<li>added connection numbering (second field in status banner)
+<li>added time writing on banners and packet headers(time.c)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC17"></a>15/01/04 0.1.19</h2>
+
+     <ul>
+<li>added &lt;pcap/pcap.h&gt; header support (i.e. trustix)
+<li>added DLT_PFLOG/DLT_NULL/DLT_RAW/DLT_IEEE802_11 header support (not tested!!!) 
+<li>added datalinktooffset function (datalink.c)
+<li>added Push/Fin/Ack packet support
+<li>added support for those systems that don't have getopt_long and getopt.h
+    header (was a problem in AIX systems, thank you Alberto
+    'JCN-9000' Varesio)
+<li>added experimental color option (-C): it is very nice! 
+    It should be helpful to read the output of tcpick. 
+<li>added new file colors.c (read code comments to know about the
+original author)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC18"></a>11/01/04 0.1.18</h2>
+
+     <ul>
+<li>fixed ridicolous bug of "resulting_bool==" in match.c
+<li>fixed FIN-WAIT-2 bad detection
+<li>added TIME-WAIT status detection
+<li>added CLOSED status detection
+</ul>
+
+<h2 class="unnumbered"><a name="TOC19"></a>11/01/04 0.1.18-test3 (UNSTABLE - BUGGY - ONLY FOR DEVELOPERS)</h2>
+
+     <ul>
+<li>Precedent tarball -test2 was damaged (thank you kirash (aka GLS) to said it to me)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC20"></a>08/01/04 0.1.18-test2 (UNSTABLE - BUGGY - ONLY FOR</h2>
+
+<p>DEVELOPERS)
+     <ul>
+<li>added DLT_NULL support by kirash (aka GLS)
+<li>fixed the ridicolous bug in -test1 (a if statement without braces)
+<li>rewritten functions verify() and match() are now fully working
+</ul>
+
+<h2 class="unnumbered"><a name="TOC21"></a>08/01/04 0.1.18-test1 (UNSTABLE - BUGGY - ONLY FOR</h2>
+
+<p>DEVELOPERS)
+     <ul>
+<li>completely rewritten match() and verify() functions
+<li>added new files datalink.c and match.c
+<li>datalink managing modified to be compatible on systems that
+don't #define all datalinks
+</ul>
+
+<h2 class="unnumbered"><a name="TOC22"></a>05/01/04 0.1.17</h2>
+
+     <ul>
+<li>ip.h header ported internally to the package for compatibility with
+  BSD systems
+<li>patch by kirash: changes to myheader.h, lookup.c and stack.c in order to
+  improve compatibility on BSD systems
+<li>added FIN-WAIT-1 status tracking
+</ul>
+
+<h2 class="unnumbered"><a name="TOC23"></a>05/01/04 0.1.16b</h2>
+
+     <ul>
+<li>previously source tarball was corrupted
+  thank you Robert Scheck
+</ul>
+
+<h2 class="unnumbered"><a name="TOC24"></a>05/01/04 0.1.16</h2>
+
+     <ul>
+<li>added protection to memory allocation and freeing
+  in the file alloc.c
+  The new routines are called S_calloc and S_free and
+  display messages when in debug mode. 
+<li>added file PLATFORMS, which describes platform tested
+  thanks nextime, Alt[O]s and Kaioh! 
+</ul>
+
+<h2 class="unnumbered"><a name="TOC25"></a>04/01/04 0.1.15b</h2>
+
+     <ul>
+<li>fixed bug in ./configure script
+</ul>
+
+<h2 class="unnumbered"><a name="TOC26"></a>04/01/04 0.1.15 (early morning)</h2>
+
+     <ul>
+<li>"STATUS" string is now nicer :)
+<li>tcp.h header is now internal, to improve compatibility
+  with *BSD systems
+<li>added new header file "myheaders.h" that should keep track
+  of all headers used in the project
+<li>added definitively my public key in the package
+</ul>
+
+<h2 class="unnumbered"><a name="TOC27"></a>03/01/04 0.1.14</h2>
+
+     <ul>
+<li>reimplemented packet sniffer engine
+  (now it is managet by pcap_loop :)
+<li>added configure script, Makefile.in
+  config.h.in and other macro-automated files
+<li>fixed inet_ntoa bug (thank you kirash)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC28"></a>09/12/03 0.1.13</h2>
+
+     <ul>
+<li>fixed name lookup: there will be only one dns query
+  for each host that doesn't have a name
+<li>removed source port in log filenames
+<li>added port into service translation
+<li>Makefile improved
+<li>now the tcpick manual page is in section 1! 
+</ul>
+
+<h2 class="unnumbered"><a name="TOC29"></a>07/12/03 0.1.12</h2>
+
+     <ul>
+<li>improved and corrected name lookup feature
+</ul>
+
+<h2 class="unnumbered"><a name="TOC30"></a>05/12/03 0.1.11-unstable</h2>
+
+     <ul>
+<li>added host lookup cached feature (BUGGY!!) 
+</ul>
+
+<h2 class="unnumbered"><a name="TOC31"></a>04/12/03 0.1.10</h2>
+
+     <ul>
+<li>added write status to file feature (-wS)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC32"></a>03/12/03 0.1.9</h2>
+
+<p>added lot of write to file features:
+     <ul>
+<li>header writing, (-wH)
+<li>only printable charachters writing (-wP)
+<li>unprintable charachters transformed into hexadecimal code (-wU)
+<li>added other options (see manpage for details) -s -P -R -U
+</ul>
+
+<h2 class="unnumbered"><a name="TOC33"></a>01/12/03 0.1.8</h2>
+
+     <ul>
+<li>added write to file feature (-w[R])
+<li>added write to file in hexdump mode feature (-w[xX])
+<li>added new file write.c
+</ul>
+
+<h2 class="unnumbered"><a name="TOC34"></a>30/11/03 0.1.7</h2>
+
+     <ul>
+<li>fixed bad hex dump manamagment
+<li>some changes in the options (see OPTIONS file for details)
+</ul>
+
+<h2 class="unnumbered"><a name="TOC35"></a>29/11/03 0.1.6</h2>
+
+     <ul>
+<li>now you can display data in the packet in hexdump mode (-x)
+and you can watch at the printable ascii charachters too, using -X option
+</ul>
+
+<h2 class="unnumbered"><a name="TOC36"></a>28/11/03 0.1.5</h2>
+
+     <ul>
+<li>better options managment, including long options
+<li>added data showing in hexadecimal
+<li>added &ndash;silent mode
+<li>done manpage prototype
+</ul>
+
+<h2 class="unnumbered"><a name="TOC37"></a>27/11/03 0.1.4</h2>
+
+     <ul>
+<li>fixed file writing: now files are opened in "w" mode
+<li>added fflush istruction when output files are updated
+<li>fixed bug: now all connection are tracked, not only the first
+</ul>
+
+<h2 class="unnumbered"><a name="TOC38"></a>24/11/03 0.1.1</h2>
+
+     <ul>
+<li>fixed bad managing of payload (now ack packets whith no data are dropped)
+</ul>
+
+</body></html>
+

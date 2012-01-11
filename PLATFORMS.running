@@ -1,0 +1,19 @@
+== Confirmed support for the following platforms and network interfaces ==
+
+fields: OS - VERSION - ARCH - INTERFACE NAME - DLT_ NAME (INTERFACE DESCR.) - TEST BY
+
+tcpick version 0.1.24
+
+Slackware Linux 10.0	2.6.8.1	i386	eth0	EN10MB (ethernet10/100)		duskdruid:despammed:com
+Slackware Linux 10.0	2.6.8.1	i386	ppp0	LINUX_SLL (dial-up ppp)		duskdruid:despammed:com
+Slackware Linux 10.0	2.6.8.1	i386	lo	EN10MB (loopback)		duskdruid:despammed:com
+OpenBSD	3.5			i386	rl0	EN10MB (Realtek 8129/8139)	kirash:phreaker:net
+OpenBSD	3.5			i386	lo0	LOOP (loopback interface)	kirash:phreaker:net
+OpenBSD	3.5			i386	pflog0	PFLOG (packet filter logging interface) kirash:phreaker:net
+NetBSD	1.6.2			i386	rtk0	EN10MB (Realtek 8129/8139)	kirash:phreaker:net
+NetBSD	1.6.2			i386	lo0	LOOP (loopback interface)	kirash:phreaker:net
+
+tcpick version =< 0.1.23
+
+Slackware Linux 9.1	2.6.2-7		i386	eth0	EN10MB (ethernet10/100)	duskdruid:despammed:com
+Slackware Linux 9.1	2.6.2-7		i386	ppp0	LINUX_SLL (dial-up ppp)	duskdruid:despammed:com

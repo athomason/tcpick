@@ -1,0 +1,99 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+22 November 2004
+
+Hello,
+my old OpenPGP key (66C8246F) has expired last month.
+Here is the revocation certificate for the old key, and the new
+key (2F66886F) follows.
+Please note that the new key (2F66886F) will be used to sign
+the source packages of the tcpick sniffer (tcpick.sf.net) since
+0.2.0-rc1 version.
+Also note that this message has been signed with the old (66C8246F) key.
+
+Thank you for the attention,
+ Francesco Stablum
+ mantainer of 'tcpick'
+
+== Old key description and fingerprint ==
+
+pub  1024D/66C8246F 2003-10-17 Francesco Stablum (DuskDruid)
+     Key fingerprint = 521D DAD3 EB81 B62B FE35  E644 8CAD C1FC 66C8 246F
+sub  2048g/D017CC19 2003-10-17 [expires: 2004-10-16]
+
+== New key description and fingerprint ==
+
+pub  1024D/2F66886F 2004-11-22 Francesco Stablum (duskdruid) <duskdruid:users.sourceforge.net>
+     Key fingerprint = 6805 6118 36C8 F7B2 F3EE  07A7 4200 8815 2F66 886F
+uid                            Francesco Stablum (duskdruid) <duskdruid:despammed.com>
+uid                            Francesco Stablum (duskdruid) <stablum:gmail.com>
+sub  2048g/F1F0E2DF 2004-11-22 [expires: 2006-11-22]
+
+== Old key revocation certificate ==
+
+- -----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+Comment: A revocation certificate should follow
+
+iQInBCARAgHnBQJBokLowR8dAVRoaXMga2V5IGhhcyBleHBpcmVkLgpJdCB3aWxs
+IGJlIHN1cGVyc2VkZWQgYnkgdGhpcyBvbmU6CnB1YiAgMTAyNEQvMkY2Njg4NkYg
+MjAwNC0xMS0yMiBGcmFuY2VzY28gU3RhYmx1bSAoZHVza2RydWlkKSA8ZHVza2Ry
+dWlkOnVzZXJzLnNvdXJjZWZvcmdlLm5ldD4KS2V5IGZpbmdlcnByaW50ID0gNjgw
+NSA2MTE4IDM2QzggRjdCMiBGM0VFICAwN0E3IDQyMDAgODgxNSAyRjY2IDg4NkYK
+dWlkICAgICAgICAgICAgICAgICAgICAgICAgICAgIEZyYW5jZXNjbyBTdGFibHVt
+IChkdXNrZHJ1aWQpIDxkdXNrZHJ1aWQ6ZGVzcGFtbWVkLmNvbT4KdWlkICAgICAg
+ICAgICAgICAgICAgICAgICAgICAgIEZyYW5jZXNjbyBTdGFibHVtIChkdXNrZHJ1
+aWQpIDxzdGFibHVtOmdtYWlsLmNvbT4Kc3ViICAyMDQ4Zy9GMUYwRTJERiAyMDA0
+LTExLTIyIFtleHBpcmVzOiAyMDA2LTExLTIyXQoyMiBOb3ZlbWJlciAyMDA0LCBG
+cmFuY2VzY28gU3RhYmx1bQAKCRCMrcH8Zsgkb4QIAJ9sRyS1Zcv68S4tXfYtc+rg
+hmZv0gCcCM1AyrLxxMEU7m4vXpkuEFAmWO8=
+=kAKC
+- -----END PGP PUBLIC KEY BLOCK-----
+
+== New key (2F66886F) follows ==
+
+- -----BEGIN PGP PUBLIC KEY BLOCK-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+
+mQGiBEGiO88RBADCmh7S7Xr/ekE76PmvjK66bHm+IhCuJCrqlQkSmbyOikBBgT3M
+Rpy3D2I7vSoHQr9nchT7/RGIX52+TWUtbJsomSDc5BzD1vzKlSekm3eQKnlGExLM
+YELKhdfNO6Ld86bCXNt2YUee+1bmYrANfkYqqp/+St8vuooFECzTvfVuiwCgzZZR
+5U9+rIC+Qs/WFBjqvfkRRdcD/1z0NDEZNe3F58NVHA6JjjvZDmv7IsAGuz52h9PU
+pwnTTwgfz0SFLHHVSK6V6iYMNHZOGuAn4CGj70xDvtSnHq/Ms5hJLRxyvWlW+fGI
+sTQWoms6z1LA8Av3zweNDQG7lJu4tLBwUj2+7vQM/w624eAZfNMdIMHWTEXr/8lu
+EftOBACHFGvYTOjh2ABlQWxlLalfrCcarL8ovvAXCoUCM8+X/PxzcgGIRsGTfvqL
+XpSsQ2EeZ2gohWPxfgFi51beQ8U/dtnVPNzmrnxHowC1m0ELiXtwGBcbVCn6i9XB
+/whZnEehZ3Tu18oStfZmwmiLO87iACBLHVEmmSAh9+6Qd1G4K7Q3RnJhbmNlc2Nv
+IFN0YWJsdW0gKGR1c2tkcnVpZCkgPGR1c2tkcnVpZEBkZXNwYW1tZWQuY29tPohk
+BBMRAgAkBQJBojvPAhsDBQkDwmcABgsJCAcDAgMVAgMDFgIBAh4BAheAAAoJEEIA
+iBUvZohvuAcAoLv16/PQHaxxhs2wfhz6xv/3xax/AJ4yCj7vkVkP3wHyMrPqJgN4
+ysB+9rQxRnJhbmNlc2NvIFN0YWJsdW0gKGR1c2tkcnVpZCkgPHN0YWJsdW1AZ21h
+aWwuY29tPohkBBMRAgAkBQJBojxxAhsDBQkDwmcABgsJCAcDAgMVAgMDFgIBAh4B
+AheAAAoJEEIAiBUvZohv62AAniC1boQ2ZcIstqKUkE2udfafSSyWAKCn071Yn4aA
+rc6GmrYA+yyiuM+aqbQ/RnJhbmNlc2NvIFN0YWJsdW0gKGR1c2tkcnVpZCkgPGR1
+c2tkcnVpZEB1c2Vycy5zb3VyY2Vmb3JnZS5uZXQ+iGQEExECACQFAkGiPLwCGwMF
+CQPCZwAGCwkIBwMCAxUCAwMWAgECHgECF4AACgkQQgCIFS9miG/mlwCfTZSdaou+
+NkFO7M9Ram6554Ggf74AnjslfZye2j0xM/vnEo8d9868RUoFuQINBEGiO/EQCADh
+UlT1bkIK7Z5dmscCObTh05JGIP4jD6Gw+uW1hcfR/67a00uAv4cPj7jtD6fo3t16
+9CHfciz7vcu3nOHhyMHb/5g2a1iGHwBkoKcg9XQjlcwYAyIpmmU4tiLRAxhOVEHp
++oYZXlgNoHMwWMcxO73xMvBgMVujkNVkzoVRGdHsinwsvTaota7iQf2QAmT2Ou2/
+cLRYCeUqs/6M4AcRB7kVqZfVrgK+gI8gLSH/wjRIvrjMjwK4ce9ZzdXWba0cRSST
+M0TdEmRveb3NbNyvWStCZgeK1UlgjO5LqO1GWLyqSlTEEWO7t724PHu9mOgcoh6T
++DouzFT3GSTCk9jCI/oLAAMGCACzi1cuxTQxQymop05qvrR3KC4IXg32SdkRbknx
+3lpYzkf9sWchd9NNF3f68Fma/3VlObOhJSjItgD2zuQy5q5tthHe3lOop5woy3Oa
+vPTKuc2cb8JgbrcGcRjvE6Jji/Al1SfcRMnaCP/t+QOopKDKsePICbKrX3wIH2TM
+CUf3BlQFhpT7Y26kjFlpnMNURfqac0J13mY6SSpu0EfO0lEYwDbSp4uXteJCN+zy
+qrZTpdIb0brbR+orR8tVlWQUurrplMv6jnZyRDz5pOEWhY/KGBi5MARW+kVTOGey
+NNHcPiOly9OoaEFTZOc3uNQC3rJi1uyuEeN+uy1PQ4VZl22GiE8EGBECAA8FAkGi
+O/ECGwwFCQPCZwAACgkQQgCIFS9miG9+sACglZMZwtFbIxn25YC+9m25WgJxsksA
+n0BiG6k7l5iQ+ovW7WKvjj7Ovc+V
+=oCR6
+- -----END PGP PUBLIC KEY BLOCK-----
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.2.4 (GNU/Linux)
+
+iD8DBQFBokYFjK3B/GbIJG8RAkk/AJ9H+7rV5M+PYCkb4xwDlHxGK60iYQCfW+bZ
+dOD15OxuroiQ9329Kh7UE0w=
+=l1TU
+-----END PGP SIGNATURE-----

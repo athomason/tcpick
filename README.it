@@ -1,0 +1,75 @@
+This is README.it, produced by makeinfo version 4.7 from
+README.it.texinfo.
+
+   tcpick e' uno sniffer con interfaccia testuale basato sulle
+celeberrime librerie libpcap.  Tra le sue funzioni quelle piu'
+importanti sono la capacita' di tracciare flussi di dati trasferiti
+mediante il protocollo tcp e la possibilita' di salvare i dati
+catturati all'interno di files, oppure di visualizzarli direttamente
+nel terminale.  Puo' essere utilizzato per il download passivo di file
+trasferiti via ftp (per l'http e' neccessaria una ulteriore decodifica
+a livello applicazione).  Tra le modalita' di visualizzazione dei dati
+ci sono: esadecimale, esadecimale con ascii (ovvero il classico
+hexdump), visualizzazione dei soli caratteri stampabili, modalita'
+"raw" ecc.  E' disponibile anche una modalita' a colori per rendere
+l'output piu' leggibile.  Se viene posizionato su un gateway puo'
+essere utilizzato per osservare le attivita' degli utenti di una rete
+interna.  Inoltre e' adatto ad essere utilizzato con strumenti testuali
+a riga di comando come grep, sed e awk.
+
+   Un semplice esempio per visualizzare le richieste http:
+
+     # tcpick -i ppp0 -yP | grep GET
+
+home page
+*********
+
+http://tcpick.sourceforge.net
+
+Altri file da leggere
+*********************
+
+   * AUTHORS
+
+   * OPTIONS
+
+   * KNOWN-BUGS
+
+   * INSTALL
+
+   * EXAMPLES.it
+
+   * TODO
+
+   * ChangeLog
+
+   * COPYING
+
+   * public_key.asc (key to check package signatures)
+
+   * public_key_message.txt
+
+contribuisci!
+*************
+
+tcpick e' un progetto open-source, e, in quanto tale, sono graditi
+qualsiasi tipo di richieste di funzionalita', report di bug, patch e
+quanto altro.  Questa e' la mailing list, che puoi utilizzare per
+segnalare qualsiasi problema:
+
+   * indirizzo
+
+     tcpick-project@lists.sourceforge.net
+
+   * Archivio
+     http://sourceforge.net/mailarchive/forum.php?forum=tcpick-project
+
+   * Pagina di iscrizione
+     http://lists.sourceforge.net/lists/listinfo/tcpick-project
+
+Note sulla licenza
+******************
+
+Tcpick e' rilasciato con la licenza GNU GPL. Per ulteriori informazioni
+leggere il file COPYING (in inglese)
+

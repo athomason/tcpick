@@ -1,0 +1,73 @@
+This is KNOWN-BUGS, produced by makeinfo version 4.7 from
+KNOWN-BUGS.texinfo.
+
+   *  Kirash reported under BSD:
+
+     read() called by pcap_read() called by pcap_loop() blocks the
+     program until gets about 600.000 byte and then calls got_packet().
+     Then it blocks until other 600.000 bytes aren't captured.  It may
+     be a problem of setitimer. If setitimer is set to 2 seconds, the
+     program works fine, but this is only a workaround.
+
+     This seem to be a kernel bug:
+
+     Subject: kern/26470: all process stop for a long time by calling
+     settimeofday() and setitimer()
+
+     List: netbsd-bugs
+
+     Date: 07/29/2004 04:32:58
+
+     [cut]
+
+     Description:
+
+     All process stops for a long time by calling setitimer() with short
+     interval and then putting the system clock forward long.
+
+     This bug has been workarounded with a fork + sleep + kill trick.
+
+   *  Segmentation fault in status_switch(): prev->next is null.  I
+     cannot understand this, because the malloc *didn't return NULL*,
+     but a valid address as gdb said me!. WTF!  NOTE: this is a very
+     rare bug.
+
+   *  Marcos Costantini reported a segmentation fault bug in tcpick
+     running on a MacOSX system.
+
+   * Penelope Fudd wrote:
+
+     Hi..
+
+     I've got a tcpdump program running that logs all email to & from
+     the mail server.
+
+     When I use 'tcpick -wR -r log-2004.xx.xx', and look at the
+     resulting client and server files, there are binary strings stuck
+     in the middle of the conversation:
+
+     [cut]
+
+     Where are these 'A0 00 00 00 00 00' chunks coming from?  I thought
+     that -wR was binary-safe.  When I follow the stream using
+     Ethereal, the problem goes away.
+
+   *  maybe it doesn't go in promisc mode even without -p
+
+
+Patches
+*******
+
+We need somebody suggesting bugs and new features!
+
+   If you want to give some help, please subscribe to the mailing-list:
+
+   <tcpick-project  lists.sourceforge.net>
+
+   Archive:
+http://sourceforge.net/mailarchive/forum.php?forum=tcpick-project
+
+   Subscribe: http://lists.sourceforge.net/lists/listinfo/tcpick-project
+
+   thanks
+
